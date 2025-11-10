@@ -248,8 +248,8 @@ modbus:
         unit_of_measurement: U/min
         input_type: input
 
-      - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_high"
-        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_high"
+      - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_low"
+        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_low"
         precision: 2
         scan_interval: 10
         address: 36
@@ -258,8 +258,8 @@ modbus:
         input_type: input
         device_class: energy
 
-      - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_low"
-        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_low"
+      - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_high"
+        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_high"
         precision: 2
         scan_interval: 10
         address: 37
@@ -268,8 +268,8 @@ modbus:
         input_type: input
         device_class: energy
 
-      - name: "hp_ENERGY_ACCUMULATIVE_TOTAL_high"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_TOTAL_high"
+      - name: "hp_ENERGY_ACCUMULATIVE_TOTAL_low"
+        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_TOTAL_low"
         precision: 2
         scan_interval: 10
         address: 38
@@ -279,8 +279,8 @@ modbus:
         device_class: energy
         state_class: total
 
-      - name: "hp_ENERGY_ACCUMULATIVE_TOTAL_low"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_TOTAL_low"
+      - name: "hp_ENERGY_ACCUMULATIVE_TOTAL_high"
+        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_TOTAL_high"
         precision: 2
         scan_interval: 10
         address: 39
@@ -290,8 +290,8 @@ modbus:
         device_class: energy
         state_class: total
         
-      - name: "hp_ENERGY_INSTANTANEOUS_HEAT_high"
-        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_HEAT_high"
+      - name: "hp_ENERGY_INSTANTANEOUS_HEAT_low"
+        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_HEAT_low"
         precision: 2
         scan_interval: 10
         address: 40
@@ -300,8 +300,8 @@ modbus:
         input_type: input
         device_class: energy
 
-      - name: "hp_ENERGY_INSTANTANEOUS_HEAT_low"
-        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_HEAT_low"
+      - name: "hp_ENERGY_INSTANTANEOUS_HEAT_high"
+        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_HEAT_high"
         precision: 2
         scan_interval: 10
         address: 41
@@ -310,8 +310,8 @@ modbus:
         input_type: input
         device_class: energy
 
-      - name: "hp_ENERGY_ACCUMULATIVE_COOL_high"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL_high"
+      - name: "hp_ENERGY_ACCUMULATIVE_COOL_low"
+        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL_low"
         precision: 2
         scan_interval: 10
         address: 42
@@ -321,8 +321,8 @@ modbus:
         device_class: energy
         state_class: total
 
-      - name: "hp_ENERGY_ACCUMULATIVE_COOL_low"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL_low"
+      - name: "hp_ENERGY_ACCUMULATIVE_COOL_high"
+        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL_high"
         precision: 2
         scan_interval: 10
         address: 43
@@ -332,8 +332,8 @@ modbus:
         device_class: energy
         state_class: total
 
-      - name: "hp_ENERGY_ACCUMULATIVE_DHW_high"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW_high"
+      - name: "hp_ENERGY_ACCUMULATIVE_DHW_low"
+        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW_low"
         precision: 2
         scan_interval: 10
         address: 44
@@ -343,8 +343,8 @@ modbus:
         device_class: energy
         state_class: total
 
-      - name: "hp_ENERGY_ACCUMULATIVE_DHW_low"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW_low"
+      - name: "hp_ENERGY_ACCUMULATIVE_DHW_high"
+        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW_high"
         precision: 2
         scan_interval: 10
         address: 45
