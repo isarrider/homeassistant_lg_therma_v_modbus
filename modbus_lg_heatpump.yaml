@@ -228,6 +228,16 @@ modbus:
         unit_of_measurement: U/min
         input_type: input
 
+      - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_high"
+        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_high"
+        precision: 2
+        scan_interval: 10
+        address: 36
+        slave: 1
+        unit_of_measurement: Wh
+        input_type: input
+        device_class: energy
+
       - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_low"
         unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_low"
         precision: 2
@@ -321,7 +331,7 @@ modbus:
         slave: 1
         unit_of_measurement: Wh
         input_type: input
-        device_class: gas #just to test if I can integrate this into my energy dashboard :-)
+        device_class: energy
         state_class: total`
 
       - name: "hp_product_info" # Produktinfos
