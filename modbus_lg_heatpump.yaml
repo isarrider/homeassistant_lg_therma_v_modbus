@@ -839,7 +839,7 @@ automation:
     action:
       - action: input_number.set_value
         target:
-          entity_id: input_number.set_hp_shift_value_in_auto_mode_circuit1
+          entity_id: input_number.hp_shift_value_in_auto_mode_circuit1
         data:
           value: "{{ states('sensor.hp_shift_value_in_auto_mode_circuit1') }}"
     mode: single
