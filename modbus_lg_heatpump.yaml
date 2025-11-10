@@ -159,24 +159,40 @@ modbus:
         unit_of_measurement: 'bar'
         input_type: input
 
-      - name: "hp_temp_liquid_gas" # Temperatur Flüssiggas
+      - name: "hp_temp_liquid_gas" # Temperatur Flüssiggas [0.1 °C ×10]
         unique_id: "modbus.hp_temp_liquid_gas"
         scan_interval: 10
+        precision: 1
+        scale: 0.1
         address: 16
         unit_of_measurement: "°C"
         slave: 1
         input_type: input
 
-      - name: "hp_temp_suction" # Temperatur Absaugung
+      - name: "hp_temp_pipe_out" # Pipe out temp [0.01 °C ×10]
+        unique_id: "modbus.hp_temp_pipe_out"
+        scan_interval: 10
+        precision: 1
+        scale: 0.01
+        address: 17
+        unit_of_measurement: "°C"
+        slave: 1
+        input_type: input
+
+      - name: "hp_temp_suction" # Temperatur Absaugung [0.1 °C ×10]
         unique_id: "modbus.hp_temp_suction"
-        scan_interval: 2
+        scan_interval: 10
+        precision: 1
+        scale: 0.1
         address: 18
         unit_of_measurement: °C
         slave: 1
         input_type: input
 
-      - name: "hp_temp_heatgas" # Heißgastemperatur
+      - name: "hp_temp_heatgas" # Heißgastemperatur [0.1 °C ×10]
         unique_id: "hp_modbus.temp_heatgas"
+        precision: 1
+        scale: 0.1
         address: 19
         unit_of_measurement: °C
         slave: 1
@@ -204,15 +220,19 @@ modbus:
         slave: 1
         input_type: input
 
-      - name: "hp_high_pressure" # Dampfdruck Kondensator
+      - name: "hp_high_pressure" # Dampfdruck Kondensator [0.1 °C ×10]
         unique_id: "hp_modbus.high_pressure"
+        precision: 1
+        scale: 0.1
         address: 22
         unit_of_measurement: Bar
         slave: 1
         input_type: input
 
-      - name: "hp_low_pressure" # Dampfdruck Verdampfer
+      - name: "hp_low_pressure" # Dampfdruck Verdampfer [0.1 °C ×10]
         unique_id: "modbus.hp_low_pressure"
+        precision: 1
+        scale: 0.1
         address: 23
         unit_of_measurement: Bar
         slave: 1
