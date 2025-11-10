@@ -334,6 +334,13 @@ modbus:
         device_class: energy
         state_class: total`
 
+      - name: "hp_product_group" # Produktgruppe
+        unique_id: "modbus.hp_product_group"
+        scan_interval: 60
+        address: 9997
+        slave: 1
+        input_type: input
+
       - name: "hp_product_info" # Produktinfos
         unique_id: "modbus.hp_product_info"
         scan_interval: 60
