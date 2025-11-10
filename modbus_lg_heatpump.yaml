@@ -416,7 +416,7 @@ modbus:
         input_type: holding
 
       - name: "hp_shift_value_in_auto_mode_circuit2" #Sollwertverschiebung HK2 (Fußbodenheizung)
-        unique_id: "modbus.hp_shift_value_in_auto_mode_circuit2"
+        unique_id: "modbus.hp_shift_value_in_auto_modwe_circuit2"
         precision: 1 #test
         scan_interval: 30
         address: 7
