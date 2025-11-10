@@ -442,6 +442,13 @@ modbus:
         address: 9 # reg 10
         input_type: holding
 
+      - name: "hp_compressor_modulation" # 0: Not used/ 40-100: Compressor Modulation
+        unique_id: "modbus.hp_compressor_modulation"
+        slave: 1
+        scan_interval: 10
+        address: 23 # reg 24
+        input_type: holding
+
     # -------------------------------------------------
     switches:
       # coil_register (binäre Daten, nur schreiben)
