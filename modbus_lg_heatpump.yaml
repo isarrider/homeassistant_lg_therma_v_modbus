@@ -156,7 +156,7 @@ modbus:
         slave: 1
         scale: 0.1
         device_class: pressure
-        unit_of_measurement: Bar
+        unit_of_measurement: 'bar'
         input_type: input
 
       - name: "hp_temp_liquid_gas" # Temperatur Flüssiggas
@@ -332,7 +332,7 @@ modbus:
         unit_of_measurement: Wh
         input_type: input
         device_class: energy
-        state_class: total`
+        state_class: total
 
       - name: "hp_product_group" # Produktgruppe
         unique_id: "modbus.hp_product_group"
