@@ -21,14 +21,14 @@ modbus:
       - name: "hp_error_code"
         unique_id: "modbus.hp_error_code"
         scan_interval: 10
-        address: 0 # reg 1
+        address: 0 # reg 01
         slave: 1
         input_type: input
 
       - name: "hp_odu_operation_cycle"
         unique_id: "modbus.hp_odu_operation_cycle"
         scan_interval: 10
-        address: 1
+        address: 1 # reg 02
         slave: 1
         input_type: input
 
@@ -37,7 +37,7 @@ modbus:
         scale: 0.1
         precision: 1
         scan_interval: 30
-        address: 2 # reg 3
+        address: 2 # reg 03
         slave: 1
         unit_of_measurement: °C
         device_class: temperature
@@ -48,7 +48,7 @@ modbus:
         scale: 0.1
         precision: 1
         scan_interval: 30
-        address: 3 # reg 4
+        address: 3 # reg 04
         slave: 1
         unit_of_measurement: °C
         device_class: temperature
@@ -59,7 +59,7 @@ modbus:
         scale: 0.1
         precision: 1
         scan_interval: 30
-        address: 4 # reg 5
+        address: 4 # reg 05
         slave: 1
         unit_of_measurement: °C
         device_class: temperature
@@ -70,7 +70,7 @@ modbus:
         scale: 0.1
         precision: 1
         scan_interval: 30
-        address: 5 # reg 6
+        address: 5 # reg 06
         slave: 1
         unit_of_measurement: °C
         device_class: temperature
@@ -81,7 +81,7 @@ modbus:
         scale: 0.1
         precision: 1
         scan_interval: 30
-        address: 6 # reg 7
+        address: 6 # reg 07
         slave: 1
         unit_of_measurement: °C
         device_class: temperature
@@ -91,7 +91,7 @@ modbus:
         unique_id: "modbus.hp_temp_technikraum"
         precision: 1
         scan_interval: 10
-        address: 7
+        address: 7 # reg 08
         slave: 1
         scale: 0.1
         device_class: temperature
@@ -103,7 +103,7 @@ modbus:
         precision: 1
         scale: 0.1
         scan_interval: 10
-        address: 8
+        address: 8 # reg 09
         slave: 1
         unit_of_measurement: "l/min"
         input_type: input
@@ -141,11 +141,22 @@ modbus:
         unique_id: "modbus.hp_outside_temp"
         precision: 1
         scan_interval: 10
-        address: 12
+        address: 12 # reg 13
         slave: 1
         scale: 0.1
         device_class: temperature
         unit_of_measurement: "°C"
+        input_type: input
+
+      - name: "hp_water_pressure" # Wasserdruck
+        unique_id: "modbus.hp_water_pressure"
+        precision: 1
+        scan_interval: 10
+        address: 13 # reg 14
+        slave: 1
+        scale: 0.1
+        device_class: pressure
+        unit_of_measurement: Bar
         input_type: input
 
       - name: "hp_temp_liquid_gas" # Temperatur Flüssiggas
