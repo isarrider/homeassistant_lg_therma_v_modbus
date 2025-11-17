@@ -248,108 +248,60 @@ modbus:
         unit_of_measurement: U/min
         input_type: input
 
-      - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_low"
-        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_low"
+      - name: "hp_ENERGY_INSTANTANEOUS_TOTAL"
+        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL"
         precision: 2
         scan_interval: 10
         address: 36
         slave: 1
-        unit_of_measurement: Wh
+        unit_of_measurement: W
+        data_type: uint32
         input_type: input
         device_class: energy
 
-      - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_high"
-        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_high"
-        precision: 2
-        scan_interval: 10
-        address: 37
-        slave: 1
-        unit_of_measurement: Wh
-        input_type: input
-        device_class: energy
-
-      - name: "hp_ENERGY_ACCUMULATIVE_TOTAL_low"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_TOTAL_low"
+      - name: "hp_ENERGY_ACCUMULATIVE_TOTAL"
+        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_TOTAL"
         precision: 2
         scan_interval: 10
         address: 38
         slave: 1
         unit_of_measurement: Wh
-        input_type: input
-        device_class: energy
-        state_class: total
-
-      - name: "hp_ENERGY_ACCUMULATIVE_TOTAL_high"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_TOTAL_high"
-        precision: 2
-        scan_interval: 10
-        address: 39
-        slave: 1
-        unit_of_measurement: Wh
+        data_type: uint32
         input_type: input
         device_class: energy
         state_class: total
         
-      - name: "hp_ENERGY_INSTANTANEOUS_HEAT_low"
-        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_HEAT_low"
+      - name: "hp_ENERGY_ACCUMULATIVE_HEAT"
+        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_HEAT"
         precision: 2
         scan_interval: 10
         address: 40
         slave: 1
         unit_of_measurement: Wh
+        data_type: uint32
         input_type: input
         device_class: energy
 
-      - name: "hp_ENERGY_INSTANTANEOUS_HEAT_high"
-        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_HEAT_high"
-        precision: 2
-        scan_interval: 10
-        address: 41
-        slave: 1
-        unit_of_measurement: Wh
-        input_type: input
-        device_class: energy
-
-      - name: "hp_ENERGY_ACCUMULATIVE_COOL_low"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL_low"
+      - name: "hp_ENERGY_ACCUMULATIVE_COOL"
+        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL"
         precision: 2
         scan_interval: 10
         address: 42
         slave: 1
         unit_of_measurement: Wh
+        data_type: uint32
         input_type: input
         device_class: energy
         state_class: total
 
-      - name: "hp_ENERGY_ACCUMULATIVE_COOL_high"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL_high"
-        precision: 2
-        scan_interval: 10
-        address: 43
-        slave: 1
-        unit_of_measurement: Wh
-        input_type: input
-        device_class: energy
-        state_class: total
-
-      - name: "hp_ENERGY_ACCUMULATIVE_DHW_low"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW_low"
+      - name: "hp_ENERGY_ACCUMULATIVE_DHW"
+        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW"
         precision: 2
         scan_interval: 10
         address: 44
         slave: 1
         unit_of_measurement: Wh
-        input_type: input
-        device_class: energy
-        state_class: total
-
-      - name: "hp_ENERGY_ACCUMULATIVE_DHW_high"
-        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW_high"
-        precision: 2
-        scan_interval: 10
-        address: 45
-        slave: 1
-        unit_of_measurement: Wh
+        data_type: uint32
         input_type: input
         device_class: energy
         state_class: total
@@ -373,14 +325,14 @@ modbus:
 
       - name: "hp_operation_mode"
         unique_id: "modbus.hp_operation_mode"
-        scan_interval: 60
+        scan_interval: 30
         address: 0
         slave: 1
         input_type: holding
 
       - name: "hp_control_method"
         unique_id: "modbus.hp_control_method"
-        scan_interval: 60
+        scan_interval: 30
         address: 1
         slave: 1
         input_type: holding
@@ -665,8 +617,8 @@ input_number:
 
   hp_hk1_target_temperatur:
     name: "Soll Temperatur HK1 #Zieltemperatur HK1 Heizkörper"
-    min: 30
-    max: 50
+    min: 20
+    max: 60
     step: 1
 
   hp_hk2_target_temperatur:
@@ -677,7 +629,7 @@ input_number:
 
   hp_dhw_target_temperatur:
     name: "Soll Temperatur DHW"
-    min: 45
+    min: 40
     max: 60
     step: 1
 
