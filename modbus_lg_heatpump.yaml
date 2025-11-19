@@ -257,7 +257,7 @@ modbus:
         unit_of_measurement: W
         data_type: uint32
         input_type: input
-        device_class: energy
+        device_class: power
 
       - name: "hp_ENERGY_ACCUMULATIVE_TOTAL"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_TOTAL"
@@ -307,8 +307,31 @@ modbus:
         device_class: energy
         state_class: total
 
-      - name: "hp_ENERGY_Heat_Output"
-        unique_id: "modbus.hp_ENERGY_Heat_Output"
+      - name: "hp_COP"
+        unique_id: "hp_COP"
+        precision: 2
+        scale: 0.1
+        scan_interval: 10
+        address: 46
+        slave: 1
+        data_type: uint32
+        input_type: input
+        device_class: power_factor
+
+      - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_TH"
+        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_TH"
+        precision: 2
+        scale: 0.1
+        scan_interval: 10
+        address: 48
+        slave: 1
+        unit_of_measurement: W
+        data_type: uint32
+        input_type: input
+        device_class: power
+        
+      - name: "hp_ENERGY_ACCUMULATIVE_HEAT_TH"
+        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_HEAT_TH"
         precision: 2
         scan_interval: 10
         address: 50
@@ -318,6 +341,30 @@ modbus:
         input_type: input
         device_class: energy
         state_class: total
+
+#      - name: "hp_ENERGY_ACCUMULATIVE_COOL_TH"
+#        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL_TH"
+#        precision: 2
+#        scan_interval: 10
+#        address: 52
+#        slave: 1
+#        unit_of_measurement: Wh
+#        data_type: uint32
+#        input_type: input
+#        device_class: energy
+#        state_class: total
+
+#      - name: "hp_ENERGY_ACCUMULATIVE_DHW_TH"
+#        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW_TH"
+#        precision: 2
+#        scan_interval: 10
+#        address: 54
+#        slave: 1
+#        unit_of_measurement: Wh
+#        data_type: uint32
+#        input_type: input
+#        device_class: energy
+#        state_class: total
 
       - name: "hp_product_group" # Produktgruppe
         unique_id: "modbus.hp_product_group"
@@ -405,7 +452,6 @@ modbus:
         precision: 1 #test
         scan_interval: 10
         address: 7
-        #data_type: int16
         slave: 1
         unit_of_measurement: °C
         input_type: holding
