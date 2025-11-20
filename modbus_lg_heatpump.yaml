@@ -248,6 +248,17 @@ modbus:
         unit_of_measurement: U/min
         input_type: input
 
+      - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_SYSTEM"
+        unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_SYSTEM"
+        precision: 2
+        scan_interval: 10
+        address: 34
+        slave: 1
+        unit_of_measurement: W
+        data_type: uint32
+        input_type: input
+        device_class: power
+
       - name: "hp_ENERGY_INSTANTANEOUS_TOTAL"
         unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL"
         precision: 2
