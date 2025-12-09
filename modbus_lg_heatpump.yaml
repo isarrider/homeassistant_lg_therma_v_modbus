@@ -547,6 +547,45 @@ modbus:
           state_on: 1
           state_off: 0
 
+      - name: "hp_emergency_stop_switch_off" # Notaus Normaler Betrieb / Notaus
+        unique_id: "modbus.hp_emergency_stop_switch_off"
+        slave: 1
+        address: 4
+        write_type: coil
+        command_on: 1
+        command_off: 0
+        verify:
+          input_type: coil
+          address: 4
+          state_on: 1
+          state_off: 0
+
+      - name: "hp_emergency_stop_switch_on" # Notaus Status halten / Betriebsstart
+        unique_id: "modbus.hp_emergency_stop_switch_on"
+        slave: 1
+        address: 5
+        write_type: coil
+        command_on: 1
+        command_off: 0
+        verify:
+          input_type: coil
+          address: 5
+          state_on: 1
+          state_off: 0
+
+      - name: "hp_active_power_limit" # Wirkleistungsbegrenzung an/aus
+        unique_id: "modbus.hp_active_power_limit"
+        slave: 1
+        address: 6
+        write_type: coil
+        command_on: 1
+        command_off: 0
+        verify:
+          input_type: coil
+          address: 6
+          state_on: 1
+          state_off: 0
+
     # -----------------------------------------
     binary_sensors:
       # discrete_input (binäre Daten, nur lesen)
