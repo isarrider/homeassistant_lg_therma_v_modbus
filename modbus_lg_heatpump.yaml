@@ -258,6 +258,7 @@ modbus:
         data_type: uint32
         input_type: input
         device_class: power
+        state_class: measurement
 
       - name: "hp_ENERGY_INSTANTANEOUS_TOTAL"
         unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL"
@@ -269,6 +270,7 @@ modbus:
         data_type: uint32
         input_type: input
         device_class: power
+        state_class: measurement
 
       - name: "hp_ENERGY_ACCUMULATIVE_TOTAL"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_TOTAL"
@@ -339,6 +341,7 @@ modbus:
         data_type: uint32
         input_type: input
         device_class: power
+        state_class: total
         
       - name: "hp_ENERGY_ACCUMULATIVE_HEAT_TH"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_HEAT_TH"
