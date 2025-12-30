@@ -1128,14 +1128,14 @@ automation:
     triggers:
       - trigger: state
         entity_id:
-          - sensor.hp_compressor_modulation_max
+          - sensor.hp_compressor_modulation
     condition: []
     action:
       - action: input_number.set_value
         target:
           entity_id: input_number.hp_compressor_modulation_max
         data:
-          value: "{{ states('sensor.hp_compressor_modulation_max') }}"
+          value: "{{ states('sensor.hp_compressor_modulation') }}"
     mode: single
 
   ### DHW Solltemperatur ###
