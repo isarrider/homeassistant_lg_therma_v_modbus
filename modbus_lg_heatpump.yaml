@@ -95,7 +95,7 @@ modbus:
         slave: 1
         scale: 0.1
         device_class: temperature
-        unit_of_measurement: "°C"
+        unit_of_measurement: °C
         input_type: input
 
       - name: "hp_flow_rate"
@@ -105,7 +105,8 @@ modbus:
         scan_interval: 10
         address: 8 # reg 09
         slave: 1
-        unit_of_measurement: "l/min"
+        device_class: volume_flow_rate
+        unit_of_measurement: L/min
         input_type: input
 
       - name: "hp_flow_temp_circle_2"
@@ -127,7 +128,7 @@ modbus:
         slave: 1
         scale: 0.1
         device_class: temperature
-        unit_of_measurement: "°C"
+        unit_of_measurement: °C
         input_type: input
 
       - name: "hp_energy_state_input"
@@ -145,7 +146,7 @@ modbus:
         slave: 1
         scale: 0.1
         device_class: temperature
-        unit_of_measurement: "°C"
+        unit_of_measurement: °C
         input_type: input
 
       - name: "hp_water_pressure" # Wasserdruck
@@ -156,67 +157,72 @@ modbus:
         slave: 1
         scale: 0.1
         device_class: pressure
-        unit_of_measurement: 'bar'
+        unit_of_measurement: bar
         input_type: input
 
       - name: "hp_temp_liquid_gas" # Temperatur Flüssiggas [0.1 °C ×10]
         unique_id: "modbus.hp_temp_liquid_gas"
         scan_interval: 10
         precision: 2
-        scale: 0.1
-        address: 16
-        unit_of_measurement: "°C"
         slave: 1
+        scale: 0.1
+        address: 16 # reg 17
+        device_class: temperature
+        unit_of_measurement: °C
         input_type: input
 
       - name: "hp_temp_pipe_out" # Pipe out temp [0.01 °C ×10]
         unique_id: "modbus.hp_temp_pipe_out"
         scan_interval: 10
         precision: 2
-        scale: 0.01
-        address: 17
-        unit_of_measurement: "°C"
         slave: 1
+        scale: 0.01
+        address: 17 # reg 18
+        device_class: temperature
+        unit_of_measurement: °C
         input_type: input
 
       - name: "hp_temp_suction" # Temperatur Absaugung [0.1 °C ×10]
         unique_id: "modbus.hp_temp_suction"
         scan_interval: 10
         precision: 2
-        scale: 0.1
-        address: 18
-        unit_of_measurement: °C
         slave: 1
+        scale: 0.1
+        address: 18 # reg 19
+        device_class: temperature
+        unit_of_measurement: °C
         input_type: input
 
       - name: "hp_temp_heatgas" # Heißgastemperatur [0.1 °C ×10]
         unique_id: "hp_modbus.temp_heatgas"
         precision: 2
-        scale: 0.1
-        address: 19
-        unit_of_measurement: °C
+        scan_interval: 10
         slave: 1
+        scale: 0.1
+        address: 19 # reg 20
+        device_class: temperature
+        unit_of_measurement: °C
         input_type: input
 
       - name: "hp_temp_before_vaporiser" # Dampftemperatur vor Verdampfer
         unique_id: "modbus.hp_temp_before_vaporiser"
         precision: 2
         scan_interval: 10
-        address: 20
+        address: 20 # reg 21
+        slave: 1
         scale: 0.1
         device_class: temperature
-        unit_of_measurement: "°C"
-        slave: 1
+        unit_of_measurement: °C
         input_type: input
 
       - name: "hp_temp_after_vaporiser" # Dampftemperatur nach Verdampfer
         unique_id: "modbus.hp_temp_after_vaporiser"
         precision: 2
         scan_interval: 10
-        address: 21
+        address: 21 # reg 22
         scale: 0.1
         device_class: temperature
-        unit_of_measurement: "°C"
+        unit_of_measurement: °C
         slave: 1
         input_type: input
 
@@ -224,8 +230,9 @@ modbus:
         unique_id: "hp_modbus.high_pressure"
         precision: 2
         scale: 0.1
-        address: 22
-        unit_of_measurement: Bar
+        address: 22 # reg 23
+        device_class: pressure
+        unit_of_measurement: bar
         slave: 1
         input_type: input
 
@@ -233,8 +240,9 @@ modbus:
         unique_id: "modbus.hp_low_pressure"
         precision: 2
         scale: 0.1
-        address: 23
-        unit_of_measurement: Bar
+        address: 23 # reg 24
+        device_class: pressure
+        unit_of_measurement: bar
         slave: 1
         input_type: input
 
@@ -243,7 +251,7 @@ modbus:
         scale: 60
         precision: 0.1
         scan_interval: 10
-        address: 24
+        address: 24 # reg 25
         slave: 1
         unit_of_measurement: U/min
         input_type: input
@@ -399,14 +407,14 @@ modbus:
       - name: "hp_operation_mode"
         unique_id: "modbus.hp_operation_mode"
         scan_interval: 10
-        address: 0
+        address: 0 # reg 40001
         slave: 1
         input_type: holding
 
       - name: "hp_control_method"
         unique_id: "modbus.hp_control_method"
         scan_interval: 10
-        address: 1
+        address: 1 # reg 40002
         slave: 1
         input_type: holding
 
@@ -415,7 +423,7 @@ modbus:
         scale: 0.1
         precision: 2
         scan_interval: 10
-        address: 2
+        address: 2 # reg 40003
         slave: 1
         unit_of_measurement: °C
         input_type: holding
@@ -425,16 +433,16 @@ modbus:
         scale: 0.1
         precision: 2
         scan_interval: 10
-        address: 3 # reg 4
+        address: 3 # reg 40004
         slave: 1
-        unit_of_measurement: "°C"
+        unit_of_measurement: °C
         input_type: holding
 
       - name: "hp_shift_value_in_auto_mode_circuit1" #Sollwertverschiebung HK1 (Heizkörper)
         unique_id: "modbus.hp_shift_value_in_auto_mode_circuit1"
         precision: 2 #test
         scan_interval: 10
-        address: 4
+        address: 4 # reg 40005
         #data_type: int16
         slave: 1
         unit_of_measurement: °C
@@ -445,7 +453,7 @@ modbus:
         scale: 0.1
         precision: 2
         scan_interval: 10
-        address: 5
+        address: 5 # reg 40006
         slave: 1
         unit_of_measurement: °C
         input_type: holding
@@ -455,16 +463,16 @@ modbus:
         scale: 0.1
         precision: 2
         scan_interval: 10
-        address: 6 # reg 7
+        address: 6 # reg 40007
         slave: 1
-        unit_of_measurement: "°C"
+        unit_of_measurement: °C
         input_type: holding
 
       - name: "hp_shift_value_in_auto_mode_circuit2" #Sollwertverschiebung HK2 (Fußbodenheizung)
         unique_id: "modbus.hp_shift_value_in_auto_mode_circuit2"
         precision: 2 #test
         scan_interval: 10
-        address: 7
+        address: 7 # reg 40008
         slave: 1
         unit_of_measurement: °C
         input_type: holding
@@ -474,7 +482,7 @@ modbus:
         scale: 0.1
         precision: 2
         scan_interval: 10
-        address: 8
+        address: 8 # reg 40009
         slave: 1
         unit_of_measurement: °C
         input_type: holding
@@ -483,15 +491,26 @@ modbus:
         unique_id: "modbus.hp_energy_state_input_raw"
         slave: 1
         scan_interval: 10
-        address: 9 # reg 10
+        address: 9 # reg 40010
         input_type: holding
 
       - name: "hp_compressor_modulation" # 0: Not used/ 40-100: Compressor Modulation
         unique_id: "modbus.hp_compressor_modulation"
         slave: 1
         scan_interval: 10
-        address: 23 # reg 24
+        address: 23 # reg 40024
         input_type: holding
+
+      - name: "hp_power_limitation" # 0: Not used/ 0.1-25.0 kW: Power Limitation
+        unique_id: "modbus.hp_power_limitation"
+        slave: 1
+        scan_interval: 10
+        address: 24 # reg 40025
+        input_type: holding
+        precision: 2
+        unit_of_measurement: W
+        device_class: power
+        state_class: measurement
 
     # -------------------------------------------------
     switches:
@@ -658,7 +677,7 @@ modbus:
       - name: "hp_solar_pump_status"
         unique_id: "modbus.hp_solar_pump_status"
         scan_interval: 10
-        address: 9  # register #10
+        address: 9
         slave: 1
         input_type: discrete_input
 
