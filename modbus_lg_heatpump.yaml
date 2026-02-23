@@ -194,7 +194,7 @@ modbus:
         input_type: input
 
       - name: "hp_temp_heatgas" # Heißgastemperatur [0.1 °C ×10]
-        unique_id: "hp_modbus.temp_heatgas"
+        unique_id: "modbus.hp_temp_heatgas"
         precision: 2
         scan_interval: 10
         slave: 1
@@ -227,7 +227,7 @@ modbus:
         input_type: input
 
       - name: "hp_high_pressure" # Dampfdruck Kondensator [0.1 °C ×10]
-        unique_id: "hp_modbus.high_pressure"
+        unique_id: "modbus.hp_high_pressure"
         precision: 2
         scan_interval: 10
         scale: 0.1
@@ -331,7 +331,7 @@ modbus:
         state_class: total
 
       - name: "hp_COP"
-        unique_id: "hp_COP"
+        unique_id: "modbus.hp_COP"
         precision: 2
         scale: 0.1
         scan_interval: 10
