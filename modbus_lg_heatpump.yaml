@@ -229,6 +229,7 @@ modbus:
       - name: "hp_high_pressure" # Dampfdruck Kondensator [0.1 °C ×10]
         unique_id: "hp_modbus.high_pressure"
         precision: 2
+        scan_interval: 10
         scale: 0.1
         address: 22 # reg 23
         device_class: pressure
@@ -239,6 +240,7 @@ modbus:
       - name: "hp_low_pressure" # Dampfdruck Verdampfer [0.1 °C ×10]
         unique_id: "modbus.hp_low_pressure"
         precision: 2
+        scan_interval: 10
         scale: 0.1
         address: 23 # reg 24
         device_class: pressure
