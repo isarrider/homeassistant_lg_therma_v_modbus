@@ -352,7 +352,7 @@ modbus:
         device_class: power
         state_class: measurement
         scan_interval: 10
-        
+
       - name: "hp_ENERGY_ACCUMULATIVE_HEAT_TH"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_HEAT_TH"
         address: 50 # Input Register 51: Cumulative Thermal Energy Yield (Space Heating)
@@ -446,7 +446,7 @@ modbus:
         input_type: holding
         data_type: int16
         slave: 1
-        precision: 2 
+        precision: 2
         unit_of_measurement: °C
         scan_interval: 10
 
@@ -522,7 +522,7 @@ modbus:
     switches:
       # coil_register (Function Code 01/05)
       # -------------------------------------------------
-      - name: "hp_hauptschalter" 
+      - name: "hp_hauptschalter"
         unique_id: "modbus.hp_hauptschalter"
         address: 0 # Coil 1: Heatpump Main Power (0=Off, 1=On)
         write_type: coil
@@ -574,7 +574,7 @@ modbus:
           state_on: 1
           state_off: 0
 
-      - name: "hp_emergency_stop_switch_off" 
+      - name: "hp_emergency_stop_switch_off"
         unique_id: "modbus.hp_emergency_stop_switch_off"
         address: 4 # Coil 5: Emergency Operation for Space Heating (0=Off, 1=On)
         write_type: coil
@@ -587,7 +587,7 @@ modbus:
           state_on: 1
           state_off: 0
 
-      - name: "hp_emergency_stop_switch_on" 
+      - name: "hp_emergency_stop_switch_on"
         unique_id: "modbus.hp_emergency_stop_switch_on"
         address: 5 # Coil 6: Emergency Operation for DHW (0=Off, 1=On)
         write_type: coil
@@ -844,7 +844,7 @@ template:
           {% else %}
             0
           {% endif %}
-          
+
 #      - name: "HP DHW COP (Calculated)"
 #        unique_id: "hp_dhw_cop_calculated"
 #        unit_of_measurement: "COP"
@@ -900,7 +900,12 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_operation_mode
-    condition: []
+    condition:
+      - condition: template
+        value_template: >
+          {% set new = 'Auto' if is_state('sensor.hp_operation_mode', '3')
+                       else ('Heizen' if is_state('sensor.hp_operation_mode', '4') else 'Kühlen') %}
+          {{ new != states('input_select.hp_set_operation_mode') }}
     action:
       - action: input_select.select_option
         target:
@@ -954,7 +959,13 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_control_method
-    condition: []
+    condition:
+      - condition: template
+        value_template: >
+          {% set new = 'Wasserauslasstemp. Steuerung' if is_state('sensor.hp_control_method', '0')
+                       else ('Wassereinlasstemp. Steuerung' if is_state('sensor.hp_control_method', '1')
+                       else 'Raumluftsteuerung') %}
+          {{ new != states('input_select.hp_set_control_method') }}
     action:
       - action: input_select.select_option
         target:
@@ -1176,9 +1187,11 @@ automation:
     alias: "[Heat Pump] Write Compressor Modulation Limit"
     description: "Sends the slider value to Modbus Address 23"
     mode: single
-    trigger:
-      - platform: state
-        entity_id: input_number.hp_compressor_modulation_slider
+    triggers:
+      - trigger: state
+        entity_id:
+          - input_number.hp_compressor_modulation_slider
+    condition: []
     action:
       - action: modbus.write_register
         data:
@@ -1191,9 +1204,10 @@ automation:
     alias: "[Heat Pump] Sync Compressor Modulation Slider"
     description: "Updates the slider if the Modbus sensor changes"
     mode: single
-    trigger:
-      - platform: state
-        entity_id: sensor.hp_compressor_modulation
+    triggers:
+      - trigger: state
+        entity_id:
+          - sensor.hp_compressor_modulation
     condition:
       - condition: template
         value_template: "{{ states('sensor.hp_compressor_modulation') | int(0) != states('input_number.hp_compressor_modulation_slider') | int(0) }}"
@@ -1206,14 +1220,16 @@ automation:
 
   ### Power Limit Vorgabe ###
   #-------------------------------------------------------------------------------
-  
+
   - id: "hp_power_limit_write"
     alias: "[Heat Pump] Write Power Limit"
     description: "Sends the slider value to Modbus Address 24"
     mode: single
-    trigger:
-      - platform: state
-        entity_id: input_number.hp_power_limitation_slider
+    triggers:
+      - trigger: state
+        entity_id:
+          - input_number.hp_power_limitation_slider
+    condition: []
     action:
       - action: modbus.write_register
         data:
@@ -1226,9 +1242,10 @@ automation:
     alias: "[Heat Pump] Sync Power Limit Slider"
     description: "Updates the slider if the Modbus sensor changes"
     mode: single
-    trigger:
-      - platform: state
-        entity_id: sensor.hp_power_limitation
+    triggers:
+      - trigger: state
+        entity_id:
+          - sensor.hp_power_limitation
     condition:
       - condition: template
         value_template: "{{ states('sensor.hp_power_limitation') | float(0) != states('input_number.hp_power_limitation_slider') | float(0) }}"
