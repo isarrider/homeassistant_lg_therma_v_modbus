@@ -444,6 +444,7 @@ modbus:
         unique_id: "modbus.hp_shift_value_in_auto_mode_circuit1"
         address: 4 # Holding Register 5 (40005): Target Temperature Shift Circuit 1 (Auto/Weather mode offset)
         input_type: holding
+        data_type: int16
         slave: 1
         precision: 2 
         unit_of_measurement: °C
@@ -473,6 +474,7 @@ modbus:
         unique_id: "modbus.hp_shift_value_in_auto_mode_circuit2"
         address: 7 # Holding Register 8 (40008): Target Temperature Shift Circuit 2 (Auto/Weather mode offset)
         input_type: holding
+        data_type: int16
         slave: 1
         precision: 2
         unit_of_measurement: °C
