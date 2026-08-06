@@ -1151,43 +1151,42 @@ automation:
         data:
           value: "{{ states('sensor.hp_dhw_target_temp') }}"
 
- ### Kompressor Drehzahl Vorgabe ###
+### Kompressor Drehzahl Vorgabe ###
   #-------------------------------------------------------------------------------
 
-- id: "hp_automation_set_hp_comp_target_percent_modbus_update"
-  alias: "[Heat Pump] Write Compressor Modulation Limit"
-  description: "Sends the slider value to Modbus Address 23"
-  mode: single
-  trigger:
-    - platform: state
-      entity_id: input_number.hp_compressor_modulation_slider
-  action:
-    - action: modbus.write_register
-      data:
-        hub: lg_heatpump
-        slave: 1
-        address: 23
-        value: "{{ states('input_number.hp_compressor_modulation_slider') | int(0) }}"
-
-- id: "hp_compressor_mod_sync"
-  alias: "[Heat Pump] Sync Compressor Modulation Slider"
-  description: "Updates the slider if the Modbus sensor changes"
-  mode: single
-  trigger:
-    - platform: state
-      entity_id: sensor.hp_compressor_modulation
-  condition:
-    # Prevents an endless loop if the value is already identical
-    - condition: template
-      value_template: "{{ states('sensor.hp_compressor_modulation') | int(0) != states('input_number.hp_compressor_modulation_slider') | int(0) }}"
-  action:
-    - action: input_number.set_value
-      target:
+  - id: "hp_automation_set_hp_comp_target_percent_modbus_update"
+    alias: "[Heat Pump] Write Compressor Modulation Limit"
+    description: "Sends the slider value to Modbus Address 23"
+    mode: single
+    trigger:
+      - platform: state
         entity_id: input_number.hp_compressor_modulation_slider
-      data:
-        value: "{{ states('sensor.hp_compressor_modulation') | int(0) }}"
+    action:
+      - action: modbus.write_register
+        data:
+          hub: lg_heatpump
+          slave: 1
+          address: 23
+          value: "{{ states('input_number.hp_compressor_modulation_slider') | int(0) }}"
 
- ### Power Limit Vorgabe ###
+  - id: "hp_compressor_mod_sync"
+    alias: "[Heat Pump] Sync Compressor Modulation Slider"
+    description: "Updates the slider if the Modbus sensor changes"
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: sensor.hp_compressor_modulation
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_compressor_modulation') | int(0) != states('input_number.hp_compressor_modulation_slider') | int(0) }}"
+    action:
+      - action: input_number.set_value
+        target:
+          entity_id: input_number.hp_compressor_modulation_slider
+        data:
+          value: "{{ states('sensor.hp_compressor_modulation') | int(0) }}"
+
+  ### Power Limit Vorgabe ###
   #-------------------------------------------------------------------------------
   
   - id: "hp_power_limit_write"
@@ -1205,20 +1204,19 @@ automation:
           address: 24
           value: "{{ (states('input_number.hp_power_limitation_slider') | float(0) * 10) | int }}"
 
-- id: "hp_power_limit_sync"
-  alias: "[Heat Pump] Sync Power Limit Slider"
-  description: "Updates the slider if the Modbus sensor changes"
-  mode: single
-  trigger:
-    - platform: state
-      entity_id: sensor.hp_power_limitation
-  condition:
-    # This condition prevents an endless feedback loop between the two automations
-    - condition: template
-      value_template: "{{ states('sensor.hp_power_limitation') | float(0) != states('input_number.hp_power_limitation_slider') | float(0) }}"
-  action:
-    - action: input_number.set_value
-      target:
-        entity_id: input_number.hp_power_limitation_slider
-      data:
-        value: "{{ states('sensor.hp_power_limitation') | float(0) }}"
+  - id: "hp_power_limit_sync"
+    alias: "[Heat Pump] Sync Power Limit Slider"
+    description: "Updates the slider if the Modbus sensor changes"
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: sensor.hp_power_limitation
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_power_limitation') | float(0) != states('input_number.hp_power_limitation_slider') | float(0) }}"
+    action:
+      - action: input_number.set_value
+        target:
+          entity_id: input_number.hp_power_limitation_slider
+        data:
+          value: "{{ states('sensor.hp_power_limitation') | float(0) }}"
