@@ -767,20 +767,23 @@ input_number:
     max: 60
     step: 1
 
-  hp_compressor_modulation_max: 
-    name: "Kompressordrehzahl (maximal) in %"
-    min: 40
-    max: 100
-    step: 1
-
   hp_power_limitation_slider:
-    name: "Max Electrical Power Limit"
+    name: "Max Electrical Power Limit in kW"
     min: 0.1
     max: 25.0
     step: 0.1
     unit_of_measurement: "kW"
     mode: slider
     icon: mdi:flash
+
+  hp_compressor_modulation_slider:
+    name: "Max Compressor Modulation in %"
+    min: 40
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    mode: slider
+    icon: mdi:engine-outline
   
 
 input_select:
@@ -1151,38 +1154,38 @@ automation:
  ### Kompressor Drehzahl Vorgabe ###
   #-------------------------------------------------------------------------------
 
-  - id: "hp_automation_set_hp_comp_target_percent_modbus_update"
-    alias: "hp_automation_set_hp_comp_target_percent_modbus_update"
-    description: "max. Kompressordrehzahl auf Modbus schreiben"
-    mode: single
-    triggers:
-      - trigger: state
-        entity_id:
-          - input_number.hp_compressor_modulation_max
-    condition: []
-    action:
-      - action: modbus.write_register
-        data:
-          hub: lg_heatpump
-          slave: 1
-          address: 23
-          value: "{{ states('input_number.hp_compressor_modulation_max') | int}}"
+- id: "hp_automation_set_hp_comp_target_percent_modbus_update"
+  alias: "[Heat Pump] Write Compressor Modulation Limit"
+  description: "Sends the slider value to Modbus Address 23"
+  mode: single
+  trigger:
+    - platform: state
+      entity_id: input_number.hp_compressor_modulation_slider
+  action:
+    - action: modbus.write_register
+      data:
+        hub: lg_heatpump
+        slave: 1
+        address: 23
+        value: "{{ states('input_number.hp_compressor_modulation_slider') | int(0) }}"
 
-  - id: "hp_automation_set_comp_target_percent_input_slider_update"
-    alias: "hp_automation_set_comp_target_percent_input_slider_update"
-    description: "Änderung der Kompressordrehzahl auf Input Slider schreiben"
-    mode: single
-    triggers:
-      - trigger: state
-        entity_id:
-          - sensor.hp_compressor_modulation
-    condition: []
-    action:
-      - action: input_number.set_value
-        target:
-          entity_id: input_number.hp_compressor_modulation_max
-        data:
-          value: "{{ states('sensor.hp_compressor_modulation') }}"
+- id: "hp_compressor_mod_sync"
+  alias: "[Heat Pump] Sync Compressor Modulation Slider"
+  description: "Updates the slider if the Modbus sensor changes"
+  mode: single
+  trigger:
+    - platform: state
+      entity_id: sensor.hp_compressor_modulation
+  condition:
+    # Prevents an endless loop if the value is already identical
+    - condition: template
+      value_template: "{{ states('sensor.hp_compressor_modulation') | int(0) != states('input_number.hp_compressor_modulation_slider') | int(0) }}"
+  action:
+    - action: input_number.set_value
+      target:
+        entity_id: input_number.hp_compressor_modulation_slider
+      data:
+        value: "{{ states('sensor.hp_compressor_modulation') | int(0) }}"
 
  ### Power Limit Vorgabe ###
   #-------------------------------------------------------------------------------
