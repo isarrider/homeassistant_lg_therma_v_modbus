@@ -823,7 +823,6 @@ template:
             {% else %} Unknown
             {% endif %}
 
-- sensor:
       - name: "HP Heating COP (Calculated)"
         unique_id: "hp_heating_cop_calculated"
         unit_of_measurement: "COP"
@@ -994,7 +993,9 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_shift_value_in_auto_mode_circuit1
-    condition: []
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_shift_value_in_auto_mode_circuit1') | int(0) != states('input_number.hp_shift_value_in_auto_mode_circuit1') | int(0) }}"
     action:
       - action: input_number.set_value
         target:
@@ -1035,7 +1036,9 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_shift_value_in_auto_mode_circuit2
-    condition: []
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_shift_value_in_auto_mode_circuit2') | int(0) != states('input_number.hp_shift_value_in_auto_mode_circuit2') | int(0) }}"
     action:
       - action: input_number.set_value
         target:
@@ -1071,7 +1074,9 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_target_temp_circuit1
-    condition: []
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_target_temp_circuit1') | float(0) != states('input_number.hp_hk1_target_temperatur') | float(0) }}"
     action:
       - action: input_number.set_value
         target:
@@ -1107,7 +1112,9 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_target_temp_circuit2
-    condition: []
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_target_temp_circuit2') | float(0) != states('input_number.hp_hk2_target_temperatur') | float(0) }}"
     action:
       - action: input_number.set_value
         target:
@@ -1143,7 +1150,9 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_dhw_target_temp
-    condition: []
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_dhw_target_temp') | float(0) != states('input_number.hp_dhw_target_temperatur') | float(0) }}"
     action:
       - action: input_number.set_value
         target:
@@ -1151,7 +1160,7 @@ automation:
         data:
           value: "{{ states('sensor.hp_dhw_target_temp') }}"
 
-### Kompressor Drehzahl Vorgabe ###
+  ### Kompressor Drehzahl Vorgabe ###
   #-------------------------------------------------------------------------------
 
   - id: "hp_automation_set_hp_comp_target_percent_modbus_update"
