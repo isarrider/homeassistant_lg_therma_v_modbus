@@ -1,6 +1,6 @@
 # Home Assistant LG Heatpump integration
 # LG Therma V R290
-# last update: 2026-08-06 Kompressorleistung %
+# last update: 2026-08-06
 
 modbus:
   - name: "lg_heatpump"
@@ -293,7 +293,7 @@ modbus:
         device_class: energy
         state_class: total
         scan_interval: 10
-        
+
       - name: "hp_ENERGY_ACCUMULATIVE_HEAT"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_HEAT"
         address: 40 # Input Register 41: Cumulative Electrical Energy (Space Heating)
