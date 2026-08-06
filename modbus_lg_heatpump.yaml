@@ -165,7 +165,7 @@ modbus:
         address: 16 # Input Register 17: Refrigerant Liquid Pipe Temperature
         input_type: input
         slave: 1
-        scale: 0.1
+        scale: 0.001
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
@@ -173,10 +173,10 @@ modbus:
 
       - name: "hp_temp_pipe_out"
         unique_id: "modbus.hp_temp_pipe_out"
-        address: 17 # Input Register 18: Refrigerant Gas Pipe Temperature (Note: scale is officially 0.1, you have 0.01)
+        address: 17 # Input Register 18: Refrigerant Gas Pipe Temperature
         input_type: input
         slave: 1
-        scale: 0.01
+        scale: 0.001
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
@@ -194,7 +194,7 @@ modbus:
         scan_interval: 10
 
       - name: "hp_temp_heatgas"
-        unique_id: "hp_modbus.temp_heatgas"
+        unique_id: "modbus.hp_temp_heatgas"
         address: 19 # Input Register 20: Compressor Discharge (Heatgas) Temperature
         input_type: input
         slave: 1
@@ -227,7 +227,7 @@ modbus:
         scan_interval: 10
 
       - name: "hp_high_pressure"
-        unique_id: "hp_modbus.high_pressure"
+        unique_id: "modbus.hp_high_pressure"
         address: 22 # Input Register 23: Condenser High Pressure (Refrigerant)
         input_type: input
         slave: 1
@@ -331,7 +331,7 @@ modbus:
         scan_interval: 10
 
       - name: "hp_COP"
-        unique_id: "hp_COP"
+        unique_id: "modbus.hp_COP"
         address: 46 # Input Register 47: Heatpump internal calculated COP
         input_type: input
         slave: 1
