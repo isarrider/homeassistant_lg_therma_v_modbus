@@ -1064,7 +1064,7 @@ automation:
           hub: lg_heatpump
           slave: 1
           address: 2
-          value: "{{ states('input_number.hp_hk1_target_temperatur') |float *10 | int}}"
+          value: "{{ (states('input_number.hp_hk1_target_temperatur') | float(0) * 10) | int }}"
 
   - id: "hp_automation_set_target_temperatur_hk1_input_slider_update"
     alias: "hp_automation_set_target_temperatur_hk1_input_slider_update"
@@ -1102,7 +1102,7 @@ automation:
           hub: lg_heatpump
           slave: 1
           address: 5
-          value: "{{ states('input_number.hp_hk2_target_temperatur') |float *10 | int}}"
+          value: "{{ (states('input_number.hp_hk2_target_temperatur') | float(0) * 10) | int }}"
 
   - id: "hp_automation_set_target_temperatur_hk2_input_slider_update"
     alias: "hp_automation_set_target_temperatur_hk2_input_slider_update"
@@ -1140,7 +1140,7 @@ automation:
           hub: lg_heatpump
           slave: 1
           address: 8
-          value: "{{ states('input_number.hp_dhw_target_temperatur') |float *10 | int}}"
+          value: "{{ (states('input_number.hp_dhw_target_temperatur') | float(0) * 10) | int }}"
 
   - id: "hp_automation_set_target_temperatur_input_slider_update"
     alias: "hp_automation_set_target_temperatur_input_slider_update"
