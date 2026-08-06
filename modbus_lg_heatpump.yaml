@@ -1183,3 +1183,39 @@ automation:
           entity_id: input_number.hp_compressor_modulation_max
         data:
           value: "{{ states('sensor.hp_compressor_modulation') }}"
+
+ ### Power Limit Vorgabe ###
+  #-------------------------------------------------------------------------------
+  
+  - id: "hp_power_limit_write"
+    alias: "[Heat Pump] Write Power Limit"
+    description: "Sends the slider value to Modbus Address 24"
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: input_number.hp_power_limitation_slider
+    action:
+      - action: modbus.write_register
+        data:
+          hub: lg_heatpump # IMPORTANT: Change this to match your Modbus hub name!
+          slave: 1
+          address: 24
+          value: "{{ (states('input_number.hp_power_limitation_slider') | float(0) * 10) | int }}"
+
+- id: "hp_power_limit_sync"
+  alias: "[Heat Pump] Sync Power Limit Slider"
+  description: "Updates the slider if the Modbus sensor changes"
+  mode: single
+  trigger:
+    - platform: state
+      entity_id: sensor.hp_power_limitation
+  condition:
+    # This condition prevents an endless feedback loop between the two automations
+    - condition: template
+      value_template: "{{ states('sensor.hp_power_limitation') | float(0) != states('input_number.hp_power_limitation_slider') | float(0) }}"
+  action:
+    - action: input_number.set_value
+      target:
+        entity_id: input_number.hp_power_limitation_slider
+      data:
+        value: "{{ states('sensor.hp_power_limitation') | float(0) }}"
