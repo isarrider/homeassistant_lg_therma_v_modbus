@@ -824,18 +824,18 @@ template:
             0
           {% endif %}
           
-      - name: "HP DHW COP (Calculated)"
-        unique_id: "hp_dhw_cop_calculated"
-        unit_of_measurement: "COP"
-        state_class: measurement
-        state: >
-          {% set thermal = states('sensor.hp_energy_accumulative_dhw_th') | float(0) %}
-          {% set electrical = states('sensor.hp_energy_accumulative_dhw') | float(0) %}
-          {% if electrical > 0 %}
-            {{ (thermal / electrical) | round(2) }}
-          {% else %}
-            0
-          {% endif %}
+#      - name: "HP DHW COP (Calculated)"
+#        unique_id: "hp_dhw_cop_calculated"
+#        unit_of_measurement: "COP"
+#        state_class: measurement
+#        state: >
+#          {% set thermal = states('sensor.hp_energy_accumulative_dhw_th') | float(0) %}
+#          {% set electrical = states('sensor.hp_energy_accumulative_dhw') | float(0) %}
+#          {% if electrical > 0 %}
+#            {{ (thermal / electrical) | round(2) }}
+#          {% else %}
+#            0
+#          {% endif %}
 
 # ---------------------------------------------------------------------------------------------------------------
 # Automations: Write modbus registers on input changes via GUI
