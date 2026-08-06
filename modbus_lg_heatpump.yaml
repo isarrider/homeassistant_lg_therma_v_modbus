@@ -1,5 +1,6 @@
 # Home Assistant LG Heatpump integration
-# last update: 2025-10-11 (for Homeassistant update 2025.10.4)
+# LG Therma V R290
+# last update: 2026-08-06 Kompressorleistung %
 
 modbus:
   - name: "lg_heatpump"
