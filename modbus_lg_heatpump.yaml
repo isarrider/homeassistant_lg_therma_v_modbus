@@ -12,7 +12,6 @@ modbus:
     parity: N
     stopbits: 1
 
-
     #------------------------------------------
     sensors:
       # Technische Daten
@@ -21,500 +20,502 @@ modbus:
 
       - name: "hp_error_code"
         unique_id: "modbus.hp_error_code"
-        scan_interval: 10
         address: 0 # reg 01
-        slave: 1
         input_type: input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_odu_operation_cycle"
         unique_id: "modbus.hp_odu_operation_cycle"
-        scan_interval: 10
         address: 1 # reg 02
-        slave: 1
         input_type: input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_inlet_temp"
         unique_id: "modbus.hp_inlet_temp"
+        address: 2 # reg 03
+        input_type: input
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 2 # reg 03
-        slave: 1
         unit_of_measurement: °C
         device_class: temperature
-        input_type: input
+        scan_interval: 10
 
       - name: "hp_outlet_temp"
         unique_id: "modbus.hp_outlet_temp"
+        address: 3 # reg 04
+        input_type: input
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 3 # reg 04
-        slave: 1
         unit_of_measurement: °C
         device_class: temperature
-        input_type: input
+        scan_interval: 10
 
       - name: "hp_backup_heater_outlet_temp"
         unique_id: "modbus.hp_backup_heater_outlet_temp"
+        address: 4 # reg 05
+        input_type: input
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 4 # reg 05
-        slave: 1
         unit_of_measurement: °C
         device_class: temperature
-        input_type: input
+        scan_interval: 10
 
       - name: "hp_dhw_water_temp"
         unique_id: "modbus.hp_dhw_water_temp"
+        address: 5 # reg 06
+        input_type: input
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 5 # reg 06
-        slave: 1
         unit_of_measurement: °C
         device_class: temperature
-        input_type: input
+        scan_interval: 10
 
       - name: "hp_solar_collector_temp"
         unique_id: "modbus.hp_solar_collector_temp"
+        address: 6 # reg 07
+        input_type: input
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 6 # reg 07
-        slave: 1
         unit_of_measurement: °C
         device_class: temperature
-        input_type: input
+        scan_interval: 10
 
       - name: "hp_temp_technikraum" # Temperatur Technikraum
         unique_id: "modbus.hp_temp_technikraum"
-        precision: 2
-        scan_interval: 10
         address: 7 # reg 08
+        input_type: input
         slave: 1
         scale: 0.1
-        device_class: temperature
+        precision: 2
         unit_of_measurement: °C
-        input_type: input
+        device_class: temperature
+        scan_interval: 10
 
       - name: "hp_flow_rate"
         unique_id: "modbus.hp_flow_rate"
-        precision: 2
-        scale: 0.1
-        scan_interval: 10
         address: 8 # reg 09
-        slave: 1
-        device_class: volume_flow_rate
-        unit_of_measurement: L/min
         input_type: input
+        slave: 1
+        scale: 0.1
+        precision: 2
+        unit_of_measurement: L/min
+        device_class: volume_flow_rate
+        scan_interval: 10
 
       - name: "hp_flow_temp_circle_2"
         unique_id: "modbus.hp_flow_temp_circle_2"
+        address: 9 # reg 10
+        input_type: input
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 9 # reg 10
-        slave: 1
-        device_class: temperature
         unit_of_measurement: °C
-        input_type: input
+        device_class: temperature
+        scan_interval: 10
 
       - name: "hp_room_air_temp_circuit2_input"
         unique_id: "modbus.hp_room_air_temp_circuit2_input"
-        precision: 2
-        scan_interval: 10
         address: 10 # reg 11
+        input_type: input
         slave: 1
         scale: 0.1
-        device_class: temperature
+        precision: 2
         unit_of_measurement: °C
-        input_type: input
+        device_class: temperature
+        scan_interval: 10
 
       - name: "hp_energy_state_input"
         unique_id: "modbus.hp_energy_state_input"
-        scan_interval: 10
         address: 11 # reg 12
-        slave: 1
         input_type: input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_outside_temp" # Außentemperatur
         unique_id: "modbus.hp_outside_temp"
-        precision: 2
-        scan_interval: 10
         address: 12 # reg 13
+        input_type: input
         slave: 1
         scale: 0.1
-        device_class: temperature
+        precision: 2
         unit_of_measurement: °C
-        input_type: input
+        device_class: temperature
+        scan_interval: 10
 
       - name: "hp_water_pressure" # Wasserdruck
         unique_id: "modbus.hp_water_pressure"
-        precision: 2
-        scan_interval: 10
         address: 13 # reg 14
+        input_type: input
         slave: 1
         scale: 0.1
-        device_class: pressure
+        precision: 2
         unit_of_measurement: bar
-        input_type: input
+        device_class: pressure
+        scan_interval: 10
 
       - name: "hp_temp_liquid_gas" # Temperatur Flüssiggas [0.1 °C ×10]
         unique_id: "modbus.hp_temp_liquid_gas"
-        scan_interval: 10
-        precision: 2
+        address: 16 # reg 17
+        input_type: input
         slave: 1
         scale: 0.1
-        address: 16 # reg 17
-        device_class: temperature
+        precision: 2
         unit_of_measurement: °C
-        input_type: input
+        device_class: temperature
+        scan_interval: 10
 
       - name: "hp_temp_pipe_out" # Pipe out temp [0.01 °C ×10]
         unique_id: "modbus.hp_temp_pipe_out"
-        scan_interval: 10
-        precision: 2
+        address: 17 # reg 18
+        input_type: input
         slave: 1
         scale: 0.01
-        address: 17 # reg 18
-        device_class: temperature
+        precision: 2
         unit_of_measurement: °C
-        input_type: input
+        device_class: temperature
+        scan_interval: 10
 
       - name: "hp_temp_suction" # Temperatur Absaugung [0.1 °C ×10]
         unique_id: "modbus.hp_temp_suction"
-        scan_interval: 10
-        precision: 2
+        address: 18 # reg 19
+        input_type: input
         slave: 1
         scale: 0.1
-        address: 18 # reg 19
-        device_class: temperature
+        precision: 2
         unit_of_measurement: °C
-        input_type: input
+        device_class: temperature
+        scan_interval: 10
 
       - name: "hp_temp_heatgas" # Heißgastemperatur [0.1 °C ×10]
         unique_id: "hp_modbus.temp_heatgas"
-        precision: 2
-        scan_interval: 10
+        address: 19 # reg 20
+        input_type: input
         slave: 1
         scale: 0.1
-        address: 19 # reg 20
-        device_class: temperature
+        precision: 2
         unit_of_measurement: °C
-        input_type: input
+        device_class: temperature
+        scan_interval: 10
 
       - name: "hp_temp_before_vaporiser" # Dampftemperatur vor Verdampfer
         unique_id: "modbus.hp_temp_before_vaporiser"
-        precision: 2
-        scan_interval: 10
         address: 20 # reg 21
+        input_type: input
         slave: 1
         scale: 0.1
-        device_class: temperature
+        precision: 2
         unit_of_measurement: °C
-        input_type: input
+        device_class: temperature
+        scan_interval: 10
 
       - name: "hp_temp_after_vaporiser" # Dampftemperatur nach Verdampfer
         unique_id: "modbus.hp_temp_after_vaporiser"
-        precision: 2
-        scan_interval: 10
         address: 21 # reg 22
-        scale: 0.1
-        device_class: temperature
-        unit_of_measurement: °C
-        slave: 1
         input_type: input
+        slave: 1
+        scale: 0.1
+        precision: 2
+        unit_of_measurement: °C
+        device_class: temperature
+        scan_interval: 10
 
       - name: "hp_high_pressure" # Dampfdruck Kondensator [0.1 °C ×10]
         unique_id: "hp_modbus.high_pressure"
-        precision: 2
-        scale: 0.1
         address: 22 # reg 23
-        device_class: pressure
-        unit_of_measurement: bar
-        slave: 1
         input_type: input
+        slave: 1
+        scale: 0.1
+        precision: 2
+        unit_of_measurement: bar
+        device_class: pressure
+        scan_interval: 10
 
       - name: "hp_low_pressure" # Dampfdruck Verdampfer [0.1 °C ×10]
         unique_id: "modbus.hp_low_pressure"
-        precision: 2
-        scale: 0.1
         address: 23 # reg 24
-        device_class: pressure
-        unit_of_measurement: bar
-        slave: 1
         input_type: input
+        slave: 1
+        scale: 0.1
+        precision: 2
+        unit_of_measurement: bar
+        device_class: pressure
+        scan_interval: 10
 
       - name: "hp_compressor_rpm" # Kompressordrehzahl
         unique_id: "modbus.hp_compressor_rpm"
+        address: 24 # reg 25
+        input_type: input
+        slave: 1
         scale: 60
         precision: 0.1
-        scan_interval: 10
-        address: 24 # reg 25
-        slave: 1
         unit_of_measurement: U/min
-        input_type: input
+        scan_interval: 10
 
       - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_SYSTEM"
         unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_SYSTEM"
-        precision: 2
-        scan_interval: 10
         address: 34
-        slave: 1
-        unit_of_measurement: W
-        data_type: uint32
         input_type: input
+        slave: 1
+        data_type: uint32
+        precision: 2
+        unit_of_measurement: W
         device_class: power
         state_class: measurement
+        scan_interval: 10
 
       - name: "hp_ENERGY_INSTANTANEOUS_TOTAL"
         unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL"
-        precision: 2
-        scan_interval: 10
         address: 36
-        slave: 1
-        unit_of_measurement: W
-        data_type: uint32
         input_type: input
+        slave: 1
+        data_type: uint32
+        precision: 2
+        unit_of_measurement: W
         device_class: power
         state_class: measurement
+        scan_interval: 10
 
       - name: "hp_ENERGY_ACCUMULATIVE_TOTAL"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_TOTAL"
-        precision: 2
-        scan_interval: 10
         address: 38
-        slave: 1
-        unit_of_measurement: Wh
-        data_type: uint32
         input_type: input
+        slave: 1
+        data_type: uint32
+        precision: 2
+        unit_of_measurement: Wh
         device_class: energy
         state_class: total
+        scan_interval: 10
         
       - name: "hp_ENERGY_ACCUMULATIVE_HEAT"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_HEAT"
-        precision: 2
-        scan_interval: 10
         address: 40
-        slave: 1
-        unit_of_measurement: Wh
-        data_type: uint32
         input_type: input
+        slave: 1
+        data_type: uint32
+        precision: 2
+        unit_of_measurement: Wh
         device_class: energy
         state_class: total
+        scan_interval: 10
 
       - name: "hp_ENERGY_ACCUMULATIVE_COOL"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL"
-        precision: 2
-        scan_interval: 10
         address: 42
-        slave: 1
-        unit_of_measurement: Wh
-        data_type: uint32
         input_type: input
+        slave: 1
+        data_type: uint32
+        precision: 2
+        unit_of_measurement: Wh
         device_class: energy
         state_class: total
+        scan_interval: 10
 
       - name: "hp_ENERGY_ACCUMULATIVE_DHW"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW"
-        precision: 2
-        scan_interval: 10
         address: 44
-        slave: 1
-        unit_of_measurement: Wh
-        data_type: uint32
         input_type: input
+        slave: 1
+        data_type: uint32
+        precision: 2
+        unit_of_measurement: Wh
         device_class: energy
         state_class: total
+        scan_interval: 10
 
       - name: "hp_COP"
         unique_id: "hp_COP"
-        precision: 2
-        scale: 0.1
-        scan_interval: 10
         address: 46
+        input_type: input
         slave: 1
         data_type: uint32
-        input_type: input
+        scale: 0.1
+        precision: 2
         device_class: power_factor
+        scan_interval: 10
 
       - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_TH"
         unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_TH"
-        precision: 2
-        scan_interval: 10
         address: 48
-        slave: 1
-        unit_of_measurement: W
-        data_type: uint32
         input_type: input
+        slave: 1
+        data_type: uint32
+        precision: 2
+        unit_of_measurement: W
         device_class: power
         state_class: measurement
+        scan_interval: 10
         
       - name: "hp_ENERGY_ACCUMULATIVE_HEAT_TH"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_HEAT_TH"
-        precision: 2
-        scan_interval: 10
         address: 50
-        slave: 1
-        unit_of_measurement: Wh
-        data_type: uint32
         input_type: input
+        slave: 1
+        data_type: uint32
+        precision: 2
+        unit_of_measurement: Wh
         device_class: energy
         state_class: total
+        scan_interval: 10
 
 #      - name: "hp_ENERGY_ACCUMULATIVE_COOL_TH"
 #        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL_TH"
-#        precision: 2
-#        scan_interval: 10
 #        address: 52
-#        slave: 1
-#        unit_of_measurement: Wh
-#        data_type: uint32
 #        input_type: input
+#        slave: 1
+#        data_type: uint32
+#        precision: 2
+#        unit_of_measurement: Wh
 #        device_class: energy
 #        state_class: total
+#        scan_interval: 10
 
 #      - name: "hp_ENERGY_ACCUMULATIVE_DHW_TH"
 #        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW_TH"
-#        precision: 2
-#        scan_interval: 10
 #        address: 54
-#        slave: 1
-#        unit_of_measurement: Wh
-#        data_type: uint32
 #        input_type: input
+#        slave: 1
+#        data_type: uint32
+#        precision: 2
+#        unit_of_measurement: Wh
 #        device_class: energy
 #        state_class: total
+#        scan_interval: 10
 
       - name: "hp_product_group" # Produktgruppe
         unique_id: "modbus.hp_product_group"
-        scan_interval: 60
         address: 9997
-        slave: 1
         input_type: input
+        slave: 1
+        scan_interval: 60
 
       - name: "hp_product_info" # Produktinfos
         unique_id: "modbus.hp_product_info"
-        scan_interval: 60
         address: 9998
-        slave: 1
         input_type: input
+        slave: 1
+        scan_interval: 60
 
       # Holding Register
       #------------------------------------------
 
       - name: "hp_operation_mode"
         unique_id: "modbus.hp_operation_mode"
-        scan_interval: 10
         address: 0 # reg 40001
-        slave: 1
         input_type: holding
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_control_method"
         unique_id: "modbus.hp_control_method"
-        scan_interval: 10
         address: 1 # reg 40002
-        slave: 1
         input_type: holding
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_target_temp_circuit1" #Zieltemperatur HK1 (Heizkörper)
         unique_id: "modbus.hp_target_temp_circuit1"
+        address: 2 # reg 40003
+        input_type: holding
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 2 # reg 40003
-        slave: 1
         unit_of_measurement: °C
-        input_type: holding
+        scan_interval: 10
 
       - name: "hp_room_air_temp_circuit1"
         unique_id: "modbus.hp_room_air_temp_circuit1"
+        address: 3 # reg 40004
+        input_type: holding
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 3 # reg 40004
-        slave: 1
         unit_of_measurement: °C
-        input_type: holding
+        scan_interval: 10
 
       - name: "hp_shift_value_in_auto_mode_circuit1" #Sollwertverschiebung HK1 (Heizkörper)
         unique_id: "modbus.hp_shift_value_in_auto_mode_circuit1"
-        precision: 2 #test
-        scan_interval: 10
         address: 4 # reg 40005
+        input_type: holding
         #data_type: int16
         slave: 1
+        precision: 2 #test
         unit_of_measurement: °C
-        input_type: holding
+        scan_interval: 10
 
       - name: "hp_target_temp_circuit2" #Zieltemperatur HK2 (Fußbodenheizung)
         unique_id: "modbus.hp_target_temp_circuit2"
+        address: 5 # reg 40006
+        input_type: holding
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 5 # reg 40006
-        slave: 1
         unit_of_measurement: °C
-        input_type: holding
+        scan_interval: 10
 
       - name: "hp_room_air_temp_circuit2" #Sollwertverschiebung HK2 (Fußbodenheizung)
         unique_id: "modbus.hp_room_air_temp_circuit2"
+        address: 6 # reg 40007
+        input_type: holding
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 6 # reg 40007
-        slave: 1
         unit_of_measurement: °C
-        input_type: holding
+        scan_interval: 10
 
       - name: "hp_shift_value_in_auto_mode_circuit2" #Sollwertverschiebung HK2 (Fußbodenheizung)
         unique_id: "modbus.hp_shift_value_in_auto_mode_circuit2"
-        precision: 2 #test
-        scan_interval: 10
         address: 7 # reg 40008
-        slave: 1
-        unit_of_measurement: °C
         input_type: holding
+        slave: 1
+        precision: 2 #test
+        unit_of_measurement: °C
+        scan_interval: 10
 
       - name: "hp_dhw_target_temp" #DHW Zieltemperatur
         unique_id: "modbus.hp_dhw_target_temp"
+        address: 8 # reg 40009
+        input_type: holding
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 8 # reg 40009
-        slave: 1
         unit_of_measurement: °C
-        input_type: holding
+        scan_interval: 10
 
       - name: "hp_energy_state_input_raw"
         unique_id: "modbus.hp_energy_state_input_raw"
-        slave: 1
-        scan_interval: 10
         address: 9 # reg 40010
         input_type: holding
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_compressor_modulation" # 0: Not used/ 40-100: Compressor Modulation in % of max rpm
         unique_id: "modbus.hp_compressor_modulation"
-        slave: 1
-        scan_interval: 10
         address: 23 # reg 40024
         input_type: holding
+        slave: 1
         precision: 1
         unit_of_measurement: "%"
+        scan_interval: 10
 
       - name: "hp_power_limitation" # 0: Not used/ 0.1-25.0 kW: Power Limitation
         unique_id: "modbus.hp_power_limitation"
+        address: 24 # reg 40025
+        input_type: holding
+        slave: 1
         scale: 0.1
         precision: 2
-        scan_interval: 10
-        address: 24 # reg 40025
-        slave: 1
-        input_type: holding
         unit_of_measurement: kW
         device_class: power
         state_class: measurement
+        scan_interval: 10
 
     # -------------------------------------------------
     switches:
@@ -522,92 +523,92 @@ modbus:
       # -------------------------------------------------
       - name: "hp_hauptschalter" # Wärmepumpe an/aus
         unique_id: "modbus.hp_hauptschalter"
-        slave: 1
         address: 0
         write_type: coil
+        slave: 1
         command_on: 1
         command_off: 0
         verify:
-          input_type: coil
           address: 0
+          input_type: coil
           state_on: 1
           state_off: 0
 
       - name: "hp_dhw" # Warmwasserbereitung an/aus
         unique_id: "modbus.hp_dhw"
-        slave: 1
         address: 1
         write_type: coil
+        slave: 1
         command_on: 1
         command_off: 0
         verify:
-          input_type: coil
           address: 1
+          input_type: coil
           state_on: 1
           state_off: 0
 
       - name: "hp_silent_mode" # Ruhemodus an/aus
         unique_id: "modbus.hp_silent_mode"
-        slave: 1
         address: 2
         write_type: coil
+        slave: 1
         command_on: 1
         command_off: 0
         verify:
-          input_type: coil
           address: 2
+          input_type: coil
           state_on: 1
           state_off: 0
 
       - name: "hp_dhw_desinfection_mode" # Desinfektionsmodus an/aus
         unique_id: "modbus.hp_dhw_desinfection_mode"
-        slave: 1
         address: 3
         write_type: coil
+        slave: 1
         command_on: 1
         command_off: 0
         verify:
-          input_type: coil
           address: 3
+          input_type: coil
           state_on: 1
           state_off: 0
 
       - name: "hp_emergency_stop_switch_off" # Notaus Normaler Betrieb / Notaus
         unique_id: "modbus.hp_emergency_stop_switch_off"
-        slave: 1
         address: 4
         write_type: coil
+        slave: 1
         command_on: 1
         command_off: 0
         verify:
-          input_type: coil
           address: 4
+          input_type: coil
           state_on: 1
           state_off: 0
 
       - name: "hp_emergency_stop_switch_on" # Notaus Status halten / Betriebsstart
         unique_id: "modbus.hp_emergency_stop_switch_on"
-        slave: 1
         address: 5
         write_type: coil
+        slave: 1
         command_on: 1
         command_off: 0
         verify:
-          input_type: coil
           address: 5
+          input_type: coil
           state_on: 1
           state_off: 0
 
       - name: "hp_active_power_limit" # Wirkleistungsbegrenzung an/aus
         unique_id: "modbus.hp_active_power_limit"
-        slave: 1
         address: 6
         write_type: coil
+        slave: 1
         command_on: 1
         command_off: 0
         verify:
-          input_type: coil
           address: 6
+          input_type: coil
           state_on: 1
           state_off: 0
 
@@ -617,122 +618,122 @@ modbus:
       # -----------------------------------------
       - name: "hp_water_flow_status"
         unique_id: "modbus.hp_water_flow_status"
-        scan_interval: 10
         address: 0
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_water_pump_status"
         unique_id: "modbus.hp_water_pump_status"
-        scan_interval: 10
         address: 1
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_ext_water_pump_status"
         unique_id: "modbus.hp_ext_water_pump_status"
-        scan_interval: 10
         address: 2
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_compressor_status"
         unique_id: "modbus.hp_compressor_status"
-        scan_interval: 10
         address: 3
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_defrosting_status"
         unique_id: "modbus.hp_defrosting_status"
-        scan_interval: 10
         address: 4
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_dhw_heating_status"
         unique_id: "modbus.hp_dhw_heating_status"
-        scan_interval: 10
         address: 5
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_dhw_tank_desinfection_status"
         unique_id: "modbus.hp_dhw_tank_desinfection_status"
-        scan_interval: 10
         address: 6
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_silent_mode_status"
         unique_id: "modbus.hp_silent_mode_status"
-        scan_interval: 10
         address: 7
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_cooling_status"
         unique_id: "modbus.hp_cooling_status"
-        scan_interval: 10
         address: 8
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_solar_pump_status"
         unique_id: "modbus.hp_solar_pump_status"
-        scan_interval: 10
         address: 9
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_backup_heater_step1_status"
         unique_id: "modbus.hp_backup_heater_step1_status"
-        scan_interval: 10
         address: 10
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_backup_heater_step2_status"
         unique_id: "modbus.hp_backup_heater_step2_status"
-        scan_interval: 10
         address: 11
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_dhw_boost_heater_status"
         unique_id: "modbus.hp_dhw_boost_heater_status"
-        scan_interval: 10
         address: 12
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_error_status"
         unique_id: "modbus.hp_error_status"
-        scan_interval: 10
         address: 13
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_emergency_operation_available_space_heating/cooling"
         unique_id: "modbus.hp_emergency_operation_available_space_heating_cooling"
-        scan_interval: 10
         address: 14
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_emergency_operation_available_dhw"
         unique_id: "modbus.hp_emergency_operation_available_dhw"
-        scan_interval: 10
         address: 15
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
       - name: "hp_mix_pump_status"
         unique_id: "modbus.hp_mix_pump_status"
-        scan_interval: 10
         address: 16
-        slave: 1
         input_type: discrete_input
+        slave: 1
+        scan_interval: 10
 
 input_number:
   # Input Number
@@ -821,6 +822,7 @@ automation:
   - id: "hp_automation_operation_mode_modbus_update"
     alias: "[Heatpump] Operation Mode Modbus Update"
     description: "Select Operation Mode of Heatpump - send via Modbus"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -842,11 +844,11 @@ automation:
             {% else %}
             {{auto}}
             {% endif %}
-    mode: single
 
   - id: "hp_automation_operation_mode_input_select_update"
     alias: "[Heatpump] Operation Mode InputSelect Update"
     description: "Select Operation Mode of Heatpump - Read from State"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -865,7 +867,6 @@ automation:
             {% else %}
             Kühlen
             {% endif %}
-    mode: single
 
   ### Input Select Control Mode ###
   #-------------------------------------------------------------------------------
@@ -873,6 +874,7 @@ automation:
   - id: "hp_automation_control_method_modbus_update"
     alias: "[Heatpump] Control Method Modbus Update"
     description: "Select Control Method of Heatpump - send via Modbus"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -896,11 +898,11 @@ automation:
             {% else %}
             {{raumluft}}
             {% endif %}
-    mode: single
 
   - id: "hp_automation_control_method_input_select_update"
     alias: "[Heatpump] Control Method InputSelect Update"
     description: "Select Control Method of Heatpump - Read from State"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -919,7 +921,6 @@ automation:
             {% else %}
             Raumluftsteuerung
             {% endif %}
-    mode: single
 
   ### Sollwertverschiebung von Heizkreis 1 (Heizkörper)###
   #-------------------------------------------------------------------------------
@@ -927,6 +928,7 @@ automation:
   - id: "hp_automation_set_shift_value_in_auto_mode_circuit1_modbus_update"
     alias: "hp_automation_set_shift_value_in_auto_mode_circuit1_modbus_update"
     description: "Änderung der Vorlauftemperatur HK1 im AI Modus auf Modbus schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -944,11 +946,11 @@ automation:
             {% else %}
             {{states('input_number.hp_shift_value_in_auto_mode_circuit1') | int }}
             {% endif %}
-    mode: single
 
   - id: "hp_automation_set_shift_value_in_auto_mode_circuit1_input_slider_update"
     alias: "hp_automation_set_shift_value_in_auto_mode_circuit1_input_slider_update"
     description: "Änderung der Vorlauftemperatur HK1 im AI Modus auf Input Slider schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -960,7 +962,6 @@ automation:
           entity_id: input_number.hp_shift_value_in_auto_mode_circuit1
         data:
           value: "{{ states('sensor.hp_shift_value_in_auto_mode_circuit1') }}"
-    mode: single
 
   ### Sollwertverschiebung von Heizkreis 2 (Fußbodenheizung)###
   #-------------------------------------------------------------------------------
@@ -968,6 +969,7 @@ automation:
   - id: "hp_automation_set_shift_value_in_auto_mode_circuit2_modbus_update"
     alias: "hp_automation_set_shift_value_in_auto_mode_circuit2_modbus_update"
     description: "Änderung der Vorlauftemperatur HK2 im AI Modus auf Modbus schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -985,11 +987,11 @@ automation:
             {% else %}
             {{states('input_number.hp_shift_value_in_auto_mode_circuit2') | int }}
             {% endif %}
-    mode: single
 
   - id: "hp_automation_set_shift_value_in_auto_mode_circuit2_input_slider_update"
     alias: "hp_automation_set_shift_value_in_auto_mode_circuit2_input_slider_update"
     description: "Änderung der Vorlauftemperatur HK2 im AI Modus auf Input Slider schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -1001,7 +1003,6 @@ automation:
           entity_id: input_number.hp_shift_value_in_auto_mode_circuit2
         data:
           value: "{{ states('sensor.hp_shift_value_in_auto_mode_circuit2') }}"
-    mode: single
 
   ### HK1 Solltemperatur ###
   #-------------------------------------------------------------------------------
@@ -1009,6 +1010,7 @@ automation:
   - id: "hp_automation_set_target_temperatur_hk1_modbus_update"
     alias: "hp_automation_set_target_temperatur_hk1_modbus_update"
     description: "Änderung der HK1 Solltemperatur auf Modbus schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -1021,11 +1023,11 @@ automation:
           slave: 1
           address: 2
           value: "{{ states('input_number.hp_hk1_target_temperatur') |float *10 | int}}"
-    mode: single
 
   - id: "hp_automation_set_target_temperatur_hk1_input_slider_update"
     alias: "hp_automation_set_target_temperatur_hk1_input_slider_update"
     description: "Änderung der HK1 Solltemperatur auf Input Slider schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -1037,7 +1039,6 @@ automation:
           entity_id: input_number.hp_hk1_target_temperatur
         data:
           value: "{{ states('sensor.hp_target_temp_circuit1') }}"
-    mode: single
 
   ### HK2 Solltemperatur ###
   #-------------------------------------------------------------------------------
@@ -1045,6 +1046,7 @@ automation:
   - id: "hp_automation_set_target_temperatur_hk2_modbus_update"
     alias: "hp_automation_set_target_temperatur_hk2_modbus_update"
     description: "Änderung der HK2 Solltemperatur auf Modbus schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -1057,11 +1059,11 @@ automation:
           slave: 1
           address: 5
           value: "{{ states('input_number.hp_hk2_target_temperatur') |float *10 | int}}"
-    mode: single
 
   - id: "hp_automation_set_target_temperatur_hk2_input_slider_update"
     alias: "hp_automation_set_target_temperatur_hk2_input_slider_update"
     description: "Änderung der HK2 Solltemperatur auf Input Slider schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -1073,7 +1075,6 @@ automation:
           entity_id: input_number.hp_hk2_target_temperatur
         data:
           value: "{{ states('sensor.hp_target_temp_circuit2') }}"
-    mode: single
 
   ### Kompressor Drehzahl Vorgabe ###
   #-------------------------------------------------------------------------------
@@ -1081,6 +1082,7 @@ automation:
   - id: "hp_automation_set_hp_comp_target_percent_modbus_update"
     alias: "hp_automation_set_hp_comp_target_percent_modbus_update"
     description: "max. Kompressordrehzahl auf Modbus schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -1093,11 +1095,11 @@ automation:
           slave: 1
           address: 23
           value: "{{ states('input_number.hp_compressor_modulation_max') | int}}"
-    mode: single
 
   - id: "hp_automation_set_comp_target_percent_input_slider_update"
     alias: "hp_automation_set_comp_target_percent_input_slider_update"
     description: "Änderung der Kompressordrehzahl auf Input Slider schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -1109,7 +1111,6 @@ automation:
           entity_id: input_number.hp_compressor_modulation_max
         data:
           value: "{{ states('sensor.hp_compressor_modulation') }}"
-    mode: single
 
   ### DHW Solltemperatur ###
   #-------------------------------------------------------------------------------
@@ -1117,6 +1118,7 @@ automation:
   - id: "hp_automation_set_target_temperatur_modbus_update"
     alias: "hp_automation_set_target_temperatur_modbus_update"
     description: "Änderung der DHW Solltemperatur auf Modbus schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -1129,11 +1131,11 @@ automation:
           slave: 1
           address: 8
           value: "{{ states('input_number.hp_dhw_target_temperatur') |float *10 | int}}"
-    mode: single
 
   - id: "hp_automation_set_target_temperatur_input_slider_update"
     alias: "hp_automation_set_target_temperatur_input_slider_update"
     description: "Änderung der DHW Solltemperatur auf Input Slider schreiben"
+    mode: single
     triggers:
       - trigger: state
         entity_id:
@@ -1145,4 +1147,3 @@ automation:
           entity_id: input_number.hp_dhw_target_temperatur
         data:
           value: "{{ states('sensor.hp_dhw_target_temp') }}"
-    mode: single
