@@ -736,9 +736,12 @@ modbus:
         slave: 1
         scan_interval: 10
 
-input_number:
+  # -----------------------------------------
   # Input Number
   # -----------------------------------------
+
+input_number:
+
   hp_shift_value_in_auto_mode_circuit1:
     name: "Set HP Sollwertverschiebung im AI Modus - HK1 (Heizkörper)"
     min: -5
@@ -786,11 +789,13 @@ input_number:
     unit_of_measurement: "%"
     mode: slider
     icon: mdi:engine-outline
-  
 
-input_select:
+  # -----------------------------------------
   # Input Select
   # -----------------------------------------
+
+input_select:
+
   hp_set_operation_mode:
     name: "Selector Heatpump Operation Mode"
     options:
@@ -805,14 +810,16 @@ input_select:
       - "Wassereinlasstemp. Steuerung"
       - "Raumluftsteuerung"
 
-template:
+  #-----------------------------------------
   # Template sensors for better readability
   #-----------------------------------------
+
+template:
   - sensor:
       - name: "HP Energy State"
         unique_id: "hp_energy_state_label"
         state: >
-            {% set v = states('sensor.hp_energy_state_input_raw') | int(-1) %}
+            {% set v = states('sensor.hp_energy_state_input') | int(-1) %}
             {% if v == 0 %} Nicht verwenden
             {% elif v == 1 %} Erzwungen Aus
             {% elif v == 2 %} Normalbetrieb
