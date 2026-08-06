@@ -162,7 +162,7 @@ modbus:
 
       - name: "hp_temp_liquid_gas"
         unique_id: "modbus.hp_temp_liquid_gas"
-        address: 16 # Input Register 17: Refrigerant Liquid Pipe Temperature
+        address: 16 # Input Register 17: Refrigerant Liquid Pipe Temperature - Scale???
         input_type: input
         slave: 1
         scale: 0.001
@@ -173,7 +173,7 @@ modbus:
 
       - name: "hp_temp_pipe_out"
         unique_id: "modbus.hp_temp_pipe_out"
-        address: 17 # Input Register 18: Refrigerant Gas Pipe Temperature
+        address: 17 # Input Register 18: Refrigerant Gas Pipe Temperature - Scale???
         input_type: input
         slave: 1
         scale: 0.001
