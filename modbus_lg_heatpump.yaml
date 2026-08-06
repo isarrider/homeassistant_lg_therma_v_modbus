@@ -1200,7 +1200,7 @@ automation:
     action:
       - action: modbus.write_register
         data:
-          hub: lg_heatpump # IMPORTANT: Change this to match your Modbus hub name!
+          hub: lg_heatpump
           slave: 1
           address: 24
           value: "{{ (states('input_number.hp_power_limitation_slider') | float(0) * 10) | int }}"
