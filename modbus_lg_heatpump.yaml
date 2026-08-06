@@ -884,7 +884,7 @@ automation:
       raumluft: 2
     action:
       - action: modbus.write_register
-        data_template:
+        data:
           hub: lg_heatpump
           slave: 1
           address: 1
@@ -934,7 +934,7 @@ automation:
     condition: []
     action:
       - action: modbus.write_register
-        data_template:
+        data:
           hub: lg_heatpump
           slave: 1
           address: 4
@@ -975,7 +975,7 @@ automation:
     condition: []
     action:
       - action: modbus.write_register
-        data_template:
+        data:
           hub: lg_heatpump
           slave: 1
           address: 7
@@ -1016,7 +1016,7 @@ automation:
     condition: []
     action:
       - action: modbus.write_register
-        data_template:
+        data:
           hub: lg_heatpump
           slave: 1
           address: 2
@@ -1052,7 +1052,7 @@ automation:
     condition: []
     action:
       - action: modbus.write_register
-        data_template:
+        data:
           hub: lg_heatpump
           slave: 1
           address: 5
@@ -1088,7 +1088,7 @@ automation:
     condition: []
     action:
       - action: modbus.write_register
-        data_template:
+        data:
           hub: lg_heatpump
           slave: 1
           address: 23
@@ -1124,7 +1124,7 @@ automation:
     condition: []
     action:
       - action: modbus.write_register
-        data_template:
+        data:
           hub: lg_heatpump
           slave: 1
           address: 8
@@ -1144,5 +1144,5 @@ automation:
         target:
           entity_id: input_number.hp_dhw_target_temperatur
         data:
-          value: "{{ states('sensor.dhw_target_temp') }}"
+          value: "{{ states('sensor.hp_dhw_target_temp') }}"
     mode: single
