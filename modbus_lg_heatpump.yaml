@@ -87,7 +87,7 @@ modbus:
         device_class: temperature
         scan_interval: 10
 
-      - name: "hp_temp_technikraum"
+      - name: "hp_temp_technikraum" # As no remote is connected it seems it uses the temp sensor from the IDU
         unique_id: "modbus.hp_temp_technikraum"
         address: 7 # Input Register 8: Room Air Temperature Circuit 1 (Measured at the wired remote controller)
         input_type: input
