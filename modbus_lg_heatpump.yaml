@@ -1112,42 +1112,6 @@ automation:
         data:
           value: "{{ states('sensor.hp_target_temp_circuit2') }}"
 
-  ### Kompressor Drehzahl Vorgabe ###
-  #-------------------------------------------------------------------------------
-
-  - id: "hp_automation_set_hp_comp_target_percent_modbus_update"
-    alias: "hp_automation_set_hp_comp_target_percent_modbus_update"
-    description: "max. Kompressordrehzahl auf Modbus schreiben"
-    mode: single
-    triggers:
-      - trigger: state
-        entity_id:
-          - input_number.hp_compressor_modulation_max
-    condition: []
-    action:
-      - action: modbus.write_register
-        data:
-          hub: lg_heatpump
-          slave: 1
-          address: 23
-          value: "{{ states('input_number.hp_compressor_modulation_max') | int}}"
-
-  - id: "hp_automation_set_comp_target_percent_input_slider_update"
-    alias: "hp_automation_set_comp_target_percent_input_slider_update"
-    description: "Änderung der Kompressordrehzahl auf Input Slider schreiben"
-    mode: single
-    triggers:
-      - trigger: state
-        entity_id:
-          - sensor.hp_compressor_modulation
-    condition: []
-    action:
-      - action: input_number.set_value
-        target:
-          entity_id: input_number.hp_compressor_modulation_max
-        data:
-          value: "{{ states('sensor.hp_compressor_modulation') }}"
-
   ### DHW Solltemperatur ###
   #-------------------------------------------------------------------------------
 
@@ -1183,3 +1147,39 @@ automation:
           entity_id: input_number.hp_dhw_target_temperatur
         data:
           value: "{{ states('sensor.hp_dhw_target_temp') }}"
+
+ ### Kompressor Drehzahl Vorgabe ###
+  #-------------------------------------------------------------------------------
+
+  - id: "hp_automation_set_hp_comp_target_percent_modbus_update"
+    alias: "hp_automation_set_hp_comp_target_percent_modbus_update"
+    description: "max. Kompressordrehzahl auf Modbus schreiben"
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id:
+          - input_number.hp_compressor_modulation_max
+    condition: []
+    action:
+      - action: modbus.write_register
+        data:
+          hub: lg_heatpump
+          slave: 1
+          address: 23
+          value: "{{ states('input_number.hp_compressor_modulation_max') | int}}"
+
+  - id: "hp_automation_set_comp_target_percent_input_slider_update"
+    alias: "hp_automation_set_comp_target_percent_input_slider_update"
+    description: "Änderung der Kompressordrehzahl auf Input Slider schreiben"
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id:
+          - sensor.hp_compressor_modulation
+    condition: []
+    action:
+      - action: input_number.set_value
+        target:
+          entity_id: input_number.hp_compressor_modulation_max
+        data:
+          value: "{{ states('sensor.hp_compressor_modulation') }}"
