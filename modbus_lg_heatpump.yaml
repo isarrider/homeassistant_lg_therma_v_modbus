@@ -497,7 +497,7 @@ modbus:
 
       - name: "hp_compressor_modulation"
         unique_id: "modbus.hp_compressor_modulation"
-        address: 23 # Holding Register 24 (40024): Max Compressor Modulation Limit (40-100%)
+        address: 23 # Holding Register 24 (40024): Max Compressor Modulation Limit (40-100%) / 0: Not used
         input_type: holding
         slave: 1
         precision: 1
