@@ -801,11 +801,11 @@ input_number:
     mode: slider
     icon: mdi:engine-outline
 
-  # -----------------------------------------
-  # Input Select
-  # -----------------------------------------
-
 input_select:
+
+      # -----------------------------------------
+      # Input Select
+      # -----------------------------------------
 
   hp_set_operation_mode:
     name: "Selector Heatpump Operation Mode"
