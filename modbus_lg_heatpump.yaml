@@ -747,12 +747,12 @@ modbus:
         slave: 1
         scan_interval: 10
 
-  # -----------------------------------------
-  # Input Number
-  # -----------------------------------------
-
 input_number:
 
+      # -----------------------------------------
+      # Input Number
+      # -----------------------------------------
+  
   hp_shift_value_in_auto_mode_circuit1:
     name: "Set HP Sollwertverschiebung im AI Modus - HK1 (Heizkörper)"
     min: -5
