@@ -355,15 +355,15 @@ modbus:
         state_class: total
         scan_interval: 10
 
-      - name: "hp_COP"
-        unique_id: "modbus.hp_COP"
-        address: 46 # Input Register 47: Heatpump internal calculated COP
+      - name: "hp_Demand_vs_Supply"
+        unique_id: "modbus.hp_DvS"
+        address: 46 # Input Register 47: Heatpump internal calculated Demand vs current Supply
         input_type: input
         slave: 1
         data_type: uint32
-        scale: 0.1
+        scale: 1
         precision: 2
-        device_class: power_factor
+        unit_of_measurement: "%"
         scan_interval: 10
 
       - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_TH"
