@@ -236,7 +236,7 @@ modbus:
         address: 22 # Input Register 23: Condenser High Pressure (Refrigerant)
         input_type: input
         slave: 1
-        scale: 0.1
+        scale: 0.01
         precision: 2
         unit_of_measurement: bar
         device_class: pressure
@@ -247,7 +247,7 @@ modbus:
         address: 23 # Input Register 24: Evaporator Low Pressure (Refrigerant)
         input_type: input
         slave: 1
-        scale: 0.1
+        scale: 0.01
         precision: 2
         unit_of_measurement: bar
         device_class: pressure
