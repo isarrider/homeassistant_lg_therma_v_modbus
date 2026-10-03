@@ -622,10 +622,12 @@ modbus:
           state_on: 1
           state_off: 0
 
-    # -----------------------------------------
     binary_sensors:
-      # discrete_input (Function Code 02)
+
+      #------------------------------------------
+      # Discrete Register (0x02) (binary Data, read only)
       # -----------------------------------------
+
       - name: "hp_water_flow_status"
         unique_id: "modbus.hp_water_flow_status"
         address: 0 # Discrete Input 1: Physical Water Flow Switch (0=No Flow, 1=Flow)
