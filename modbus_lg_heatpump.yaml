@@ -524,9 +524,13 @@ modbus:
         scan_interval: 10
 
     # -------------------------------------------------
+    
     switches:
-      # coil_register (Function Code 01/05)
-      # -------------------------------------------------
+    
+      #------------------------------------------
+      # Coil Register (0x01) (binary Data, write only)
+      #------------------------------------------
+
       - name: "hp_hauptschalter"
         unique_id: "modbus.hp_hauptschalter"
         address: 0 # Coil 1: Heatpump Main Power (0=Off, 1=On)
