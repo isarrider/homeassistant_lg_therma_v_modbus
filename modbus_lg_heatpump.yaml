@@ -11,6 +11,9 @@ modbus:
     method: rtu
     parity: N
     stopbits: 1
+#    timeout: 5                     # seconds to wait for a response (default: 5)
+#    message_wait_milliseconds: 30  # pause between requests (default: 30 for serial)
+#    delay: 0                       # one-time delay after connecting, if your device needs to "wake up"
 
 #------------------------------------------------
 
