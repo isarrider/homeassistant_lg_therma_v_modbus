@@ -12,10 +12,12 @@ modbus:
     parity: N
     stopbits: 1
 
-    #------------------------------------------
+#------------------------------------------------
+
     sensors:
-      # Technische Daten
-      # Input Register (Function Code 04)
+
+      #------------------------------------------
+      # Input Register
       #------------------------------------------
 
       - name: "hp_error_code"
