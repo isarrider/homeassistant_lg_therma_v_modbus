@@ -396,14 +396,14 @@ modbus:
         address: 9997 # Input Register 9998: Product Group ID
         input_type: input
         slave: 1
-        scan_interval: 60
+        scan_interval: 3600
 
       - name: "hp_product_info"
         unique_id: "modbus.hp_product_info"
         address: 9998 # Input Register 9999: Product Info/Model ID
         input_type: input
         slave: 1
-        scan_interval: 60
+        scan_interval: 3600
 
       #------------------------------------------
       # Holding Register (Function Code 03/06)
