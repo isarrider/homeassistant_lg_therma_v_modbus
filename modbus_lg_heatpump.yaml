@@ -1,6 +1,6 @@
 # Home Assistant LG Heatpump integration
 # LG Therma V R290
-# last update: 2026-08-06 Kompressorleistung %
+# last update: 2026-08-06
 
 modbus:
   - name: "lg_heatpump"
@@ -22,21 +22,21 @@ modbus:
 
       - name: "hp_error_code"
         unique_id: "modbus.hp_error_code"
-        address: 0 # reg 01
+        address: 0 # Input Register 1: Current Error Code (0 = No Error, >0 = LG Error Code)
         input_type: input
         slave: 1
         scan_interval: 10
 
       - name: "hp_odu_operation_cycle"
         unique_id: "modbus.hp_odu_operation_cycle"
-        address: 1 # reg 02
+        address: 1 # Input Register 2: Outdoor Unit Operation State (0=Off, 1=Standby, 2=Running, 3=Defrost)
         input_type: input
         slave: 1
         scan_interval: 10
 
       - name: "hp_inlet_temp"
         unique_id: "modbus.hp_inlet_temp"
-        address: 2 # reg 03
+        address: 2 # Input Register 3: Entering Water Temperature (Rücklauf)
         input_type: input
         slave: 1
         scale: 0.1
@@ -47,7 +47,7 @@ modbus:
 
       - name: "hp_outlet_temp"
         unique_id: "modbus.hp_outlet_temp"
-        address: 3 # reg 04
+        address: 3 # Input Register 4: Leaving Water Temperature Circuit 1 (Vorlauf HK1)
         input_type: input
         slave: 1
         scale: 0.1
@@ -58,7 +58,7 @@ modbus:
 
       - name: "hp_backup_heater_outlet_temp"
         unique_id: "modbus.hp_backup_heater_outlet_temp"
-        address: 4 # reg 05
+        address: 4 # Input Register 5: Water Temperature after Backup Heater
         input_type: input
         slave: 1
         scale: 0.1
@@ -69,7 +69,7 @@ modbus:
 
       - name: "hp_dhw_water_temp"
         unique_id: "modbus.hp_dhw_water_temp"
-        address: 5 # reg 06
+        address: 5 # Input Register 6: Domestic Hot Water (DHW) Tank Temperature
         input_type: input
         slave: 1
         scale: 0.1
@@ -80,7 +80,7 @@ modbus:
 
       - name: "hp_solar_collector_temp"
         unique_id: "modbus.hp_solar_collector_temp"
-        address: 6 # reg 07
+        address: 6 # Input Register 7: Solar Thermal Collector Temperature
         input_type: input
         slave: 1
         scale: 0.1
@@ -89,9 +89,9 @@ modbus:
         device_class: temperature
         scan_interval: 10
 
-      - name: "hp_temp_technikraum" # Temperatur Technikraum
+      - name: "hp_temp_technikraum" # As no remote is connected it seems it uses the temp sensor from the IDU
         unique_id: "modbus.hp_temp_technikraum"
-        address: 7 # reg 08
+        address: 7 # Input Register 8: Room Air Temperature Circuit 1 (Measured at the wired remote controller)
         input_type: input
         slave: 1
         scale: 0.1
@@ -102,7 +102,7 @@ modbus:
 
       - name: "hp_flow_rate"
         unique_id: "modbus.hp_flow_rate"
-        address: 8 # reg 09
+        address: 8 # Input Register 9: Water Flow Rate (Liters per minute)
         input_type: input
         slave: 1
         scale: 0.1
@@ -113,7 +113,7 @@ modbus:
 
       - name: "hp_flow_temp_circle_2"
         unique_id: "modbus.hp_flow_temp_circle_2"
-        address: 9 # reg 10
+        address: 9 # Input Register 10: Leaving Water Temperature Circuit 2 (Vorlauf HK2 nach Mischer)
         input_type: input
         slave: 1
         scale: 0.1
@@ -124,7 +124,7 @@ modbus:
 
       - name: "hp_room_air_temp_circuit2_input"
         unique_id: "modbus.hp_room_air_temp_circuit2_input"
-        address: 10 # reg 11
+        address: 10 # Input Register 11: Room Air Temperature Circuit 2
         input_type: input
         slave: 1
         scale: 0.1
@@ -135,14 +135,14 @@ modbus:
 
       - name: "hp_energy_state_input"
         unique_id: "modbus.hp_energy_state_input"
-        address: 11 # reg 12
+        address: 11 # Input Register 12: Current active SG-Ready / Energy State Profile
         input_type: input
         slave: 1
         scan_interval: 10
 
-      - name: "hp_outside_temp" # Außentemperatur
+      - name: "hp_outside_temp"
         unique_id: "modbus.hp_outside_temp"
-        address: 12 # reg 13
+        address: 12 # Input Register 13: Outdoor Ambient Air Temperature
         input_type: input
         slave: 1
         scale: 0.1
@@ -151,9 +151,9 @@ modbus:
         device_class: temperature
         scan_interval: 10
 
-      - name: "hp_water_pressure" # Wasserdruck
+      - name: "hp_water_pressure"
         unique_id: "modbus.hp_water_pressure"
-        address: 13 # reg 14
+        address: 13 # Input Register 14: Hydronic Water Circuit Pressure
         input_type: input
         slave: 1
         scale: 0.1
@@ -162,31 +162,31 @@ modbus:
         device_class: pressure
         scan_interval: 10
 
-      - name: "hp_temp_liquid_gas" # Temperatur Flüssiggas [0.1 °C ×10]
+      - name: "hp_temp_liquid_gas"
         unique_id: "modbus.hp_temp_liquid_gas"
-        address: 16 # reg 17
+        address: 16 # Input Register 17: Refrigerant Liquid Pipe Temperature - Scale???
         input_type: input
         slave: 1
-        scale: 0.1
+        scale: 0.001
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
         scan_interval: 10
 
-      - name: "hp_temp_pipe_out" # Pipe out temp [0.01 °C ×10]
+      - name: "hp_temp_pipe_out"
         unique_id: "modbus.hp_temp_pipe_out"
-        address: 17 # reg 18
+        address: 17 # Input Register 18: Refrigerant Gas Pipe Temperature - Scale???
         input_type: input
         slave: 1
-        scale: 0.01
+        scale: 0.001
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
         scan_interval: 10
 
-      - name: "hp_temp_suction" # Temperatur Absaugung [0.1 °C ×10]
+      - name: "hp_temp_suction"
         unique_id: "modbus.hp_temp_suction"
-        address: 18 # reg 19
+        address: 18 # Input Register 19: Compressor Suction Temperature
         input_type: input
         slave: 1
         scale: 0.1
@@ -195,9 +195,9 @@ modbus:
         device_class: temperature
         scan_interval: 10
 
-      - name: "hp_temp_heatgas" # Heißgastemperatur [0.1 °C ×10]
-        unique_id: "hp_modbus.temp_heatgas"
-        address: 19 # reg 20
+      - name: "hp_temp_heatgas"
+        unique_id: "modbus.hp_temp_heatgas"
+        address: 19 # Input Register 20: Compressor Discharge (Heatgas) Temperature
         input_type: input
         slave: 1
         scale: 0.1
@@ -206,9 +206,9 @@ modbus:
         device_class: temperature
         scan_interval: 10
 
-      - name: "hp_temp_before_vaporiser" # Dampftemperatur vor Verdampfer
+      - name: "hp_temp_before_vaporiser"
         unique_id: "modbus.hp_temp_before_vaporiser"
-        address: 20 # reg 21
+        address: 20 # Input Register 21: Evaporator In Temperature
         input_type: input
         slave: 1
         scale: 0.1
@@ -217,9 +217,9 @@ modbus:
         device_class: temperature
         scan_interval: 10
 
-      - name: "hp_temp_after_vaporiser" # Dampftemperatur nach Verdampfer
+      - name: "hp_temp_after_vaporiser"
         unique_id: "modbus.hp_temp_after_vaporiser"
-        address: 21 # reg 22
+        address: 21 # Input Register 22: Evaporator Out Temperature
         input_type: input
         slave: 1
         scale: 0.1
@@ -228,9 +228,9 @@ modbus:
         device_class: temperature
         scan_interval: 10
 
-      - name: "hp_high_pressure" # Dampfdruck Kondensator [0.1 bar ×10]
-        unique_id: "hp_modbus.high_pressure"
-        address: 22 # reg 23
+      - name: "hp_high_pressure"
+        unique_id: "modbus.hp_high_pressure"
+        address: 22 # Input Register 23: Condenser High Pressure (Refrigerant)
         input_type: input
         slave: 1
         scale: 0.1
@@ -239,9 +239,9 @@ modbus:
         device_class: pressure
         scan_interval: 10
 
-      - name: "hp_low_pressure" # Dampfdruck Verdampfer [0.1 bar ×10]
+      - name: "hp_low_pressure"
         unique_id: "modbus.hp_low_pressure"
-        address: 23 # reg 24
+        address: 23 # Input Register 24: Evaporator Low Pressure (Refrigerant)
         input_type: input
         slave: 1
         scale: 0.1
@@ -250,19 +250,19 @@ modbus:
         device_class: pressure
         scan_interval: 10
 
-      - name: "hp_compressor_rpm" # Kompressordrehzahl
+      - name: "hp_compressor_rpm"
         unique_id: "modbus.hp_compressor_rpm"
-        address: 24 # reg 25
+        address: 24 # Input Register 25: Compressor Frequency (Hz). Scaled by 60 to get RPM.
         input_type: input
         slave: 1
         scale: 60
-        precision: 0.1
+        precision: 1
         unit_of_measurement: U/min
         scan_interval: 10
 
       - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_SYSTEM"
         unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_SYSTEM"
-        address: 34
+        address: 34 # Input Register 35: Instantaneous Electrical Power Consumption (Total System)
         input_type: input
         slave: 1
         data_type: uint32
@@ -274,7 +274,7 @@ modbus:
 
       - name: "hp_ENERGY_INSTANTANEOUS_TOTAL"
         unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL"
-        address: 36
+        address: 36 # Input Register 37: Instantaneous Electrical Power Consumption (Heatpump Only)
         input_type: input
         slave: 1
         data_type: uint32
@@ -286,7 +286,7 @@ modbus:
 
       - name: "hp_ENERGY_ACCUMULATIVE_TOTAL"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_TOTAL"
-        address: 38
+        address: 38 # Input Register 39: Cumulative Electrical Energy (Total)
         input_type: input
         slave: 1
         data_type: uint32
@@ -295,10 +295,10 @@ modbus:
         device_class: energy
         state_class: total
         scan_interval: 10
-        
+
       - name: "hp_ENERGY_ACCUMULATIVE_HEAT"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_HEAT"
-        address: 40
+        address: 40 # Input Register 41: Cumulative Electrical Energy (Space Heating)
         input_type: input
         slave: 1
         data_type: uint32
@@ -310,7 +310,7 @@ modbus:
 
       - name: "hp_ENERGY_ACCUMULATIVE_COOL"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL"
-        address: 42
+        address: 42 # Input Register 43: Cumulative Electrical Energy (Space Cooling)
         input_type: input
         slave: 1
         data_type: uint32
@@ -322,7 +322,7 @@ modbus:
 
       - name: "hp_ENERGY_ACCUMULATIVE_DHW"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW"
-        address: 44
+        address: 44 # Input Register 45: Cumulative Electrical Energy (DHW Heating)
         input_type: input
         slave: 1
         data_type: uint32
@@ -333,8 +333,8 @@ modbus:
         scan_interval: 10
 
       - name: "hp_COP"
-        unique_id: "hp_COP"
-        address: 46
+        unique_id: "modbus.hp_COP"
+        address: 46 # Input Register 47: Heatpump internal calculated COP
         input_type: input
         slave: 1
         data_type: uint32
@@ -345,7 +345,7 @@ modbus:
 
       - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_TH"
         unique_id: "modbus.hp_ENERGY_INSTANTANEOUS_TOTAL_TH"
-        address: 48
+        address: 48 # Input Register 49: Instantaneous Thermal Energy Generation (Yield)
         input_type: input
         slave: 1
         data_type: uint32
@@ -354,10 +354,10 @@ modbus:
         device_class: power
         state_class: measurement
         scan_interval: 10
-        
+
       - name: "hp_ENERGY_ACCUMULATIVE_HEAT_TH"
         unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_HEAT_TH"
-        address: 50
+        address: 50 # Input Register 51: Cumulative Thermal Energy Yield (Space Heating)
         input_type: input
         slave: 1
         data_type: uint32
@@ -369,7 +369,7 @@ modbus:
 
 #      - name: "hp_ENERGY_ACCUMULATIVE_COOL_TH"
 #        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_COOL_TH"
-#        address: 52
+#        address: 52 # Input Register 53: Cumulative Thermal Energy Yield (Space Cooling)
 #        input_type: input
 #        slave: 1
 #        data_type: uint32
@@ -381,7 +381,7 @@ modbus:
 
 #      - name: "hp_ENERGY_ACCUMULATIVE_DHW_TH"
 #        unique_id: "modbus.hp_ENERGY_ACCUMULATIVE_DHW_TH"
-#        address: 54
+#        address: 54 # Input Register 55: Cumulative Thermal Energy Yield (DHW Heating)
 #        input_type: input
 #        slave: 1
 #        data_type: uint32
@@ -391,41 +391,41 @@ modbus:
 #        state_class: total
 #        scan_interval: 10
 
-      - name: "hp_product_group" # Produktgruppe
+      - name: "hp_product_group"
         unique_id: "modbus.hp_product_group"
-        address: 9997
+        address: 9997 # Input Register 9998: Product Group ID
         input_type: input
         slave: 1
         scan_interval: 3600
 
-      - name: "hp_product_info" # Produktinfos
+      - name: "hp_product_info"
         unique_id: "modbus.hp_product_info"
-        address: 9998
+        address: 9998 # Input Register 9999: Product Info/Model ID
         input_type: input
         slave: 1
         scan_interval: 3600
 
       #------------------------------------------
-      # Holding Register
+      # Holding Register (Function Code 03/06)
       #------------------------------------------
 
       - name: "hp_operation_mode"
         unique_id: "modbus.hp_operation_mode"
-        address: 0 # reg 40001
+        address: 0 # Holding Register 1 (40001): Target Operation Mode (0=Cooling, 1=Heating, 2=Weather Dep, 3=Auto)
         input_type: holding
         slave: 1
         scan_interval: 10
 
       - name: "hp_control_method"
         unique_id: "modbus.hp_control_method"
-        address: 1 # reg 40002
+        address: 1 # Holding Register 2 (40002): Temperature Control Method (0=Leaving Water, 1=Entering Water, 2=Room Air)
         input_type: holding
         slave: 1
         scan_interval: 10
 
-      - name: "hp_target_temp_circuit1" #Zieltemperatur HK1 (Heizkörper)
+      - name: "hp_target_temp_circuit1"
         unique_id: "modbus.hp_target_temp_circuit1"
-        address: 2 # reg 40003
+        address: 2 # Holding Register 3 (40003): Target Water Temperature Circuit 1
         input_type: holding
         slave: 1
         scale: 0.1
@@ -435,7 +435,7 @@ modbus:
 
       - name: "hp_room_air_temp_circuit1"
         unique_id: "modbus.hp_room_air_temp_circuit1"
-        address: 3 # reg 40004
+        address: 3 # Holding Register 4 (40004): Target Room Air Temperature Circuit 1
         input_type: holding
         slave: 1
         scale: 0.1
@@ -443,19 +443,20 @@ modbus:
         unit_of_measurement: °C
         scan_interval: 10
 
-      - name: "hp_shift_value_in_auto_mode_circuit1" #Sollwertverschiebung HK1 (Heizkörper)
+      - name: "hp_shift_value_in_auto_mode_circuit1"
         unique_id: "modbus.hp_shift_value_in_auto_mode_circuit1"
-        address: 4 # reg 40005
+        address: 4 # Holding Register 5 (40005): Target Temperature Shift Circuit 1 (Auto/Weather mode offset)
         input_type: holding
+        data_type: int16
         slave: 1
         scale: 1
         precision: 2
         unit_of_measurement: °C
         scan_interval: 10
 
-      - name: "hp_target_temp_circuit2" #Zieltemperatur HK2 (Fußbodenheizung)
+      - name: "hp_target_temp_circuit2"
         unique_id: "modbus.hp_target_temp_circuit2"
-        address: 5 # reg 40006
+        address: 5 # Holding Register 6 (40006): Target Water Temperature Circuit 2
         input_type: holding
         slave: 1
         scale: 0.1
@@ -463,9 +464,9 @@ modbus:
         unit_of_measurement: °C
         scan_interval: 10
 
-      - name: "hp_room_air_temp_circuit2" #Sollwertverschiebung HK2 (Fußbodenheizung)
+      - name: "hp_room_air_temp_circuit2"
         unique_id: "modbus.hp_room_air_temp_circuit2"
-        address: 6 # reg 40007
+        address: 6 # Holding Register 7 (40007): Target Room Air Temperature Circuit 2
         input_type: holding
         slave: 1
         scale: 0.1
@@ -473,19 +474,20 @@ modbus:
         unit_of_measurement: °C
         scan_interval: 10
 
-      - name: "hp_shift_value_in_auto_mode_circuit2" #Sollwertverschiebung HK2 (Fußbodenheizung)
+      - name: "hp_shift_value_in_auto_mode_circuit2"
         unique_id: "modbus.hp_shift_value_in_auto_mode_circuit2"
-        address: 7 # reg 40008
+        address: 7 # Holding Register 8 (40008): Target Temperature Shift Circuit 2 (Auto/Weather mode offset)
         input_type: holding
+        data_type: int16
         slave: 1
         scale: 1
         precision: 2
         unit_of_measurement: °C
         scan_interval: 10
 
-      - name: "hp_dhw_target_temp" #DHW Zieltemperatur
+      - name: "hp_dhw_target_temp"
         unique_id: "modbus.hp_dhw_target_temp"
-        address: 8 # reg 40009
+        address: 8 # Holding Register 9 (40009): DHW Target Water Temperature
         input_type: holding
         slave: 1
         scale: 0.1
@@ -495,23 +497,23 @@ modbus:
 
       - name: "hp_energy_state_input_raw"
         unique_id: "modbus.hp_energy_state_input_raw"
-        address: 9 # reg 40010
+        address: 9 # Holding Register 10 (40010): Write SG-Ready / Energy State Command (Solar surplus override)
         input_type: holding
         slave: 1
         scan_interval: 10
 
-      - name: "hp_compressor_modulation" # 0: Not used/ 40-100: Compressor Modulation in % of max rpm
+      - name: "hp_compressor_modulation"
         unique_id: "modbus.hp_compressor_modulation"
-        address: 23 # reg 40024
+        address: 23 # Holding Register 24 (40024): Max Compressor Modulation Limit (40-100%) / 0: Not used
         input_type: holding
         slave: 1
         precision: 1
         unit_of_measurement: "%"
         scan_interval: 10
 
-      - name: "hp_power_limitation" # 0: Not used/ 0.1-25.0 kW: Power Limitation
+      - name: "hp_power_limitation"
         unique_id: "modbus.hp_power_limitation"
-        address: 24 # reg 40025
+        address: 24 # Holding Register 25 (40025): Max Active Electrical Power Limit (0.1 - 25.0 kW)
         input_type: holding
         slave: 1
         scale: 0.1
@@ -529,9 +531,9 @@ modbus:
       # Coil Register (0x01) (binary Data, write only)
       #------------------------------------------
 
-      - name: "hp_hauptschalter" # Wärmepumpe an/aus
+      - name: "hp_hauptschalter"
         unique_id: "modbus.hp_hauptschalter"
-        address: 0
+        address: 0 # Coil 1: Heatpump Main Power (0=Off, 1=On)
         write_type: coil
         slave: 1
         command_on: 1
@@ -542,9 +544,9 @@ modbus:
           state_on: 1
           state_off: 0
 
-      - name: "hp_dhw" # Warmwasserbereitung an/aus
+      - name: "hp_dhw"
         unique_id: "modbus.hp_dhw"
-        address: 1
+        address: 1 # Coil 2: DHW Operation (0=Off, 1=On)
         write_type: coil
         slave: 1
         command_on: 1
@@ -555,9 +557,9 @@ modbus:
           state_on: 1
           state_off: 0
 
-      - name: "hp_silent_mode" # Ruhemodus an/aus
+      - name: "hp_silent_mode"
         unique_id: "modbus.hp_silent_mode"
-        address: 2
+        address: 2 # Coil 3: Silent Mode Schedule Override (0=Off, 1=On)
         write_type: coil
         slave: 1
         command_on: 1
@@ -568,9 +570,9 @@ modbus:
           state_on: 1
           state_off: 0
 
-      - name: "hp_dhw_desinfection_mode" # Desinfektionsmodus an/aus
+      - name: "hp_dhw_desinfection_mode"
         unique_id: "modbus.hp_dhw_desinfection_mode"
-        address: 3
+        address: 3 # Coil 4: Force DHW Legionella Disinfection Cycle
         write_type: coil
         slave: 1
         command_on: 1
@@ -581,9 +583,9 @@ modbus:
           state_on: 1
           state_off: 0
 
-      - name: "hp_emergency_stop_switch_off" # Notaus Normaler Betrieb / Notaus
+      - name: "hp_emergency_stop_switch_off"
         unique_id: "modbus.hp_emergency_stop_switch_off"
-        address: 4
+        address: 4 # Coil 5: Emergency Operation for Space Heating (0=Off, 1=On)
         write_type: coil
         slave: 1
         command_on: 1
@@ -594,9 +596,9 @@ modbus:
           state_on: 1
           state_off: 0
 
-      - name: "hp_emergency_stop_switch_on" # Notaus Status halten / Betriebsstart
+      - name: "hp_emergency_stop_switch_on"
         unique_id: "modbus.hp_emergency_stop_switch_on"
-        address: 5
+        address: 5 # Coil 6: Emergency Operation for DHW (0=Off, 1=On)
         write_type: coil
         slave: 1
         command_on: 1
@@ -607,9 +609,9 @@ modbus:
           state_on: 1
           state_off: 0
 
-      - name: "hp_active_power_limit" # Wirkleistungsbegrenzung an/aus
+      - name: "hp_active_power_limit"
         unique_id: "modbus.hp_active_power_limit"
-        address: 6
+        address: 6 # Coil 7: Toggle Active Power Limitation (Uses value from Holding Reg 25)
         write_type: coil
         slave: 1
         command_on: 1
@@ -628,119 +630,119 @@ modbus:
 
       - name: "hp_water_flow_status"
         unique_id: "modbus.hp_water_flow_status"
-        address: 0
+        address: 0 # Discrete Input 1: Physical Water Flow Switch (0=No Flow, 1=Flow)
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_water_pump_status"
         unique_id: "modbus.hp_water_pump_status"
-        address: 1
+        address: 1 # Discrete Input 2: Main Water Pump Running State
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_ext_water_pump_status"
         unique_id: "modbus.hp_ext_water_pump_status"
-        address: 2
+        address: 2 # Discrete Input 3: External Water Pump Running State
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_compressor_status"
         unique_id: "modbus.hp_compressor_status"
-        address: 3
+        address: 3 # Discrete Input 4: Compressor Running State
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_defrosting_status"
         unique_id: "modbus.hp_defrosting_status"
-        address: 4
+        address: 4 # Discrete Input 5: Defrost Cycle Active
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_dhw_heating_status"
         unique_id: "modbus.hp_dhw_heating_status"
-        address: 5
+        address: 5 # Discrete Input 6: DHW Heating Cycle Active
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_dhw_tank_desinfection_status"
         unique_id: "modbus.hp_dhw_tank_desinfection_status"
-        address: 6
+        address: 6 # Discrete Input 7: DHW Disinfection Cycle Active
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_silent_mode_status"
         unique_id: "modbus.hp_silent_mode_status"
-        address: 7
+        address: 7 # Discrete Input 8: Silent Mode Active (Feedback)
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_cooling_status"
         unique_id: "modbus.hp_cooling_status"
-        address: 8
+        address: 8 # Discrete Input 9: Cooling Mode Active
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_solar_pump_status"
         unique_id: "modbus.hp_solar_pump_status"
-        address: 9
+        address: 9 # Discrete Input 10: Solar Thermal Pump Running State
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_backup_heater_step1_status"
         unique_id: "modbus.hp_backup_heater_step1_status"
-        address: 10
+        address: 10 # Discrete Input 11: Inline Backup Heater Step 1 Active
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_backup_heater_step2_status"
         unique_id: "modbus.hp_backup_heater_step2_status"
-        address: 11
+        address: 11 # Discrete Input 12: Inline Backup Heater Step 2 Active
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_dhw_boost_heater_status"
         unique_id: "modbus.hp_dhw_boost_heater_status"
-        address: 12
+        address: 12 # Discrete Input 13: DHW Tank Flange/Boost Heater Active
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_error_status"
         unique_id: "modbus.hp_error_status"
-        address: 13
+        address: 13 # Discrete Input 14: General Error Flag (1=Error present)
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_emergency_operation_available_space_heating/cooling"
         unique_id: "modbus.hp_emergency_operation_available_space_heating_cooling"
-        address: 14
+        address: 14 # Discrete Input 15: Emergency Space Heating is physically available/configured
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_emergency_operation_available_dhw"
         unique_id: "modbus.hp_emergency_operation_available_dhw"
-        address: 15
+        address: 15 # Discrete Input 16: Emergency DHW Heating is physically available/configured
         input_type: discrete_input
         slave: 1
         scan_interval: 10
 
       - name: "hp_mix_pump_status"
         unique_id: "modbus.hp_mix_pump_status"
-        address: 16
+        address: 16 # Discrete Input 17: Mixing Circuit 2 Pump Status
         input_type: discrete_input
         slave: 1
         scan_interval: 10
@@ -781,11 +783,23 @@ input_number:
     max: 60
     step: 1
 
-  hp_compressor_modulation_max: 
-    name: "Kompressordrehzahl (maximal) in %"
+  hp_power_limitation_slider:
+    name: "Max Electrical Power Limit in kW"
+    min: 0.1
+    max: 25.0
+    step: 0.1
+    unit_of_measurement: "kW"
+    mode: slider
+    icon: mdi:flash
+
+  hp_compressor_modulation_slider:
+    name: "Max Compressor Modulation in %"
     min: 40
     max: 100
     step: 1
+    unit_of_measurement: "%"
+    mode: slider
+    icon: mdi:engine-outline
 
 input_select:
 
@@ -812,11 +826,12 @@ template:
       # -----------------------------------------
       # Template sensors for better readability
       # -----------------------------------------
+
   - sensor:
       - name: "HP Energy State"
         unique_id: "hp_energy_state_label"
         state: >
-            {% set v = states('sensor.hp_energy_state_input_raw') | int(-1) %}
+            {% set v = states('sensor.hp_energy_state_input') | int(-1) %}
             {% if v == 0 %} Nicht verwenden
             {% elif v == 1 %} Erzwungen Aus
             {% elif v == 2 %} Normalbetrieb
@@ -828,6 +843,32 @@ template:
             {% elif v == 8 %} Superenergiesparmodus
             {% else %} Unknown
             {% endif %}
+
+      - name: "HP Heating COP (Calculated)"
+        unique_id: "hp_heating_cop_calculated"
+        unit_of_measurement: "COP"
+        state_class: measurement
+        state: >
+          {% set thermal = states('sensor.hp_energy_accumulative_heat_th') | float(0) %}
+          {% set electrical = states('sensor.hp_energy_accumulative_heat') | float(0) %}
+          {% if electrical > 0 %}
+            {{ (thermal / electrical) | round(2) }}
+          {% else %}
+            0
+          {% endif %}
+
+#      - name: "HP DHW COP (Calculated)"
+#        unique_id: "hp_dhw_cop_calculated"
+#        unit_of_measurement: "COP"
+#        state_class: measurement
+#        state: >
+#          {% set thermal = states('sensor.hp_energy_accumulative_dhw_th') | float(0) %}
+#          {% set electrical = states('sensor.hp_energy_accumulative_dhw') | float(0) %}
+#          {% if electrical > 0 %}
+#            {{ (thermal / electrical) | round(2) }}
+#          {% else %}
+#            0
+#          {% endif %}
 
 # ---------------------------------------------------------------------------------------------------------------
 # Automations: Write modbus registers on input changes via GUI
@@ -871,7 +912,12 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_operation_mode
-    condition: []
+    condition:
+      - condition: template
+        value_template: >
+          {% set new = 'Auto' if is_state('sensor.hp_operation_mode', '3')
+                       else ('Heizen' if is_state('sensor.hp_operation_mode', '4') else 'Kühlen') %}
+          {{ new != states('input_select.hp_set_operation_mode') }}
     action:
       - action: input_select.select_option
         target:
@@ -925,7 +971,13 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_control_method
-    condition: []
+    condition:
+      - condition: template
+        value_template: >
+          {% set new = 'Wasserauslasstemp. Steuerung' if is_state('sensor.hp_control_method', '0')
+                       else ('Wassereinlasstemp. Steuerung' if is_state('sensor.hp_control_method', '1')
+                       else 'Raumluftsteuerung') %}
+          {{ new != states('input_select.hp_set_control_method') }}
     action:
       - action: input_select.select_option
         target:
@@ -973,7 +1025,9 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_shift_value_in_auto_mode_circuit1
-    condition: []
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_shift_value_in_auto_mode_circuit1') | int(0) != states('input_number.hp_shift_value_in_auto_mode_circuit1') | int(0) }}"
     action:
       - action: input_number.set_value
         target:
@@ -1014,7 +1068,9 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_shift_value_in_auto_mode_circuit2
-    condition: []
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_shift_value_in_auto_mode_circuit2') | int(0) != states('input_number.hp_shift_value_in_auto_mode_circuit2') | int(0) }}"
     action:
       - action: input_number.set_value
         target:
@@ -1040,7 +1096,7 @@ automation:
           hub: lg_heatpump
           slave: 1
           address: 2
-          value: "{{ states('input_number.hp_hk1_target_temperatur') |float *10 | int}}"
+          value: "{{ (states('input_number.hp_hk1_target_temperatur') | float(0) * 10) | int }}"
 
   - id: "hp_automation_set_target_temperatur_hk1_input_slider_update"
     alias: "hp_automation_set_target_temperatur_hk1_input_slider_update"
@@ -1050,7 +1106,9 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_target_temp_circuit1
-    condition: []
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_target_temp_circuit1') | float(0) != states('input_number.hp_hk1_target_temperatur') | float(0) }}"
     action:
       - action: input_number.set_value
         target:
@@ -1076,7 +1134,7 @@ automation:
           hub: lg_heatpump
           slave: 1
           address: 5
-          value: "{{ states('input_number.hp_hk2_target_temperatur') |float *10 | int}}"
+          value: "{{ (states('input_number.hp_hk2_target_temperatur') | float(0) * 10) | int }}"
 
   - id: "hp_automation_set_target_temperatur_hk2_input_slider_update"
     alias: "hp_automation_set_target_temperatur_hk2_input_slider_update"
@@ -1086,49 +1144,15 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_target_temp_circuit2
-    condition: []
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_target_temp_circuit2') | float(0) != states('input_number.hp_hk2_target_temperatur') | float(0) }}"
     action:
       - action: input_number.set_value
         target:
           entity_id: input_number.hp_hk2_target_temperatur
         data:
           value: "{{ states('sensor.hp_target_temp_circuit2') }}"
-
-  ### Kompressor Drehzahl Vorgabe ###
-  #-------------------------------------------------------------------------------
-
-  - id: "hp_automation_set_hp_comp_target_percent_modbus_update"
-    alias: "hp_automation_set_hp_comp_target_percent_modbus_update"
-    description: "max. Kompressordrehzahl auf Modbus schreiben"
-    mode: single
-    triggers:
-      - trigger: state
-        entity_id:
-          - input_number.hp_compressor_modulation_max
-    condition: []
-    action:
-      - action: modbus.write_register
-        data:
-          hub: lg_heatpump
-          slave: 1
-          address: 23
-          value: "{{ states('input_number.hp_compressor_modulation_max') | int}}"
-
-  - id: "hp_automation_set_comp_target_percent_input_slider_update"
-    alias: "hp_automation_set_comp_target_percent_input_slider_update"
-    description: "Änderung der Kompressordrehzahl auf Input Slider schreiben"
-    mode: single
-    triggers:
-      - trigger: state
-        entity_id:
-          - sensor.hp_compressor_modulation
-    condition: []
-    action:
-      - action: input_number.set_value
-        target:
-          entity_id: input_number.hp_compressor_modulation_max
-        data:
-          value: "{{ states('sensor.hp_compressor_modulation') }}"
 
   ### DHW Solltemperatur ###
   #-------------------------------------------------------------------------------
@@ -1148,7 +1172,7 @@ automation:
           hub: lg_heatpump
           slave: 1
           address: 8
-          value: "{{ states('input_number.hp_dhw_target_temperatur') |float *10 | int}}"
+          value: "{{ (states('input_number.hp_dhw_target_temperatur') | float(0) * 10) | int }}"
 
   - id: "hp_automation_set_target_temperatur_input_slider_update"
     alias: "hp_automation_set_target_temperatur_input_slider_update"
@@ -1158,10 +1182,88 @@ automation:
       - trigger: state
         entity_id:
           - sensor.hp_dhw_target_temp
-    condition: []
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_dhw_target_temp') | float(0) != states('input_number.hp_dhw_target_temperatur') | float(0) }}"
     action:
       - action: input_number.set_value
         target:
           entity_id: input_number.hp_dhw_target_temperatur
         data:
           value: "{{ states('sensor.hp_dhw_target_temp') }}"
+
+  ### Kompressor Drehzahl Vorgabe ###
+  #-------------------------------------------------------------------------------
+
+  - id: "hp_automation_set_hp_comp_target_percent_modbus_update"
+    alias: "[Heat Pump] Write Compressor Modulation Limit"
+    description: "Sends the slider value to Modbus Address 23"
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id:
+          - input_number.hp_compressor_modulation_slider
+    condition: []
+    action:
+      - action: modbus.write_register
+        data:
+          hub: lg_heatpump
+          slave: 1
+          address: 23
+          value: "{{ states('input_number.hp_compressor_modulation_slider') | int(0) }}"
+
+  - id: "hp_compressor_mod_sync"
+    alias: "[Heat Pump] Sync Compressor Modulation Slider"
+    description: "Updates the slider if the Modbus sensor changes"
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id:
+          - sensor.hp_compressor_modulation
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_compressor_modulation') | int(0) != states('input_number.hp_compressor_modulation_slider') | int(0) }}"
+    action:
+      - action: input_number.set_value
+        target:
+          entity_id: input_number.hp_compressor_modulation_slider
+        data:
+          value: "{{ states('sensor.hp_compressor_modulation') | int(0) }}"
+
+  ### Power Limit Vorgabe ###
+  #-------------------------------------------------------------------------------
+
+  - id: "hp_power_limit_write"
+    alias: "[Heat Pump] Write Power Limit"
+    description: "Sends the slider value to Modbus Address 24"
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id:
+          - input_number.hp_power_limitation_slider
+    condition: []
+    action:
+      - action: modbus.write_register
+        data:
+          hub: lg_heatpump
+          slave: 1
+          address: 24
+          value: "{{ (states('input_number.hp_power_limitation_slider') | float(0) * 10) | int }}"
+
+  - id: "hp_power_limit_sync"
+    alias: "[Heat Pump] Sync Power Limit Slider"
+    description: "Updates the slider if the Modbus sensor changes"
+    mode: single
+    triggers:
+      - trigger: state
+        entity_id:
+          - sensor.hp_power_limitation
+    condition:
+      - condition: template
+        value_template: "{{ states('sensor.hp_power_limitation') | float(0) != states('input_number.hp_power_limitation_slider') | float(0) }}"
+    action:
+      - action: input_number.set_value
+        target:
+          entity_id: input_number.hp_power_limitation_slider
+        data:
+          value: "{{ states('sensor.hp_power_limitation') | float(0) }}"
