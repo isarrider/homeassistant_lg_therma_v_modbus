@@ -46,6 +46,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_outlet_temp"
@@ -57,6 +58,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_backup_heater_outlet_temp"
@@ -68,6 +70,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_dhw_water_temp"
@@ -79,6 +82,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_solar_collector_temp"
@@ -90,6 +94,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_temp_technikraum" # As no remote is connected it seems it uses the temp sensor from the IDU
@@ -101,6 +106,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_flow_rate"
@@ -112,6 +118,7 @@ modbus:
         precision: 2
         unit_of_measurement: L/min
         device_class: volume_flow_rate
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_flow_temp_circle_2"
@@ -123,6 +130,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_room_air_temp_circuit2_input"
@@ -134,6 +142,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_energy_state_input"
@@ -152,6 +161,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_water_pressure"
@@ -163,6 +173,7 @@ modbus:
         precision: 2
         unit_of_measurement: bar
         device_class: pressure
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_temp_liquid_gas"
@@ -174,6 +185,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_temp_pipe_out"
@@ -185,6 +197,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_temp_suction"
@@ -196,6 +209,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_temp_heatgas"
@@ -207,6 +221,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_temp_before_vaporiser"
@@ -218,6 +233,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_temp_after_vaporiser"
@@ -229,6 +245,7 @@ modbus:
         precision: 2
         unit_of_measurement: °C
         device_class: temperature
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_high_pressure"
@@ -240,6 +257,7 @@ modbus:
         precision: 2
         unit_of_measurement: bar
         device_class: pressure
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_low_pressure"
@@ -251,6 +269,7 @@ modbus:
         precision: 2
         unit_of_measurement: bar
         device_class: pressure
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_compressor_rpm"
@@ -261,6 +280,7 @@ modbus:
         scale: 60
         precision: 1
         unit_of_measurement: U/min
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_ENERGY_INSTANTANEOUS_TOTAL_SYSTEM"
