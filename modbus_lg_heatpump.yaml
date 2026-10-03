@@ -821,11 +821,12 @@ input_select:
       - "Wassereinlasstemp. Steuerung"
       - "Raumluftsteuerung"
 
-  #-----------------------------------------
-  # Template sensors for better readability
-  #-----------------------------------------
-
 template:
+
+      # -----------------------------------------
+      # Template sensors for better readability
+      # -----------------------------------------
+
   - sensor:
       - name: "HP Energy State"
         unique_id: "hp_energy_state_label"
