@@ -454,6 +454,7 @@ modbus:
         scale: 0.1
         precision: 2
         unit_of_measurement: °C
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_room_air_temp_circuit1"
@@ -464,6 +465,7 @@ modbus:
         scale: 0.1
         precision: 2
         unit_of_measurement: °C
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_shift_value_in_auto_mode_circuit1"
@@ -475,6 +477,7 @@ modbus:
         scale: 1
         precision: 2
         unit_of_measurement: °C
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_target_temp_circuit2"
@@ -485,6 +488,7 @@ modbus:
         scale: 0.1
         precision: 2
         unit_of_measurement: °C
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_room_air_temp_circuit2"
@@ -495,6 +499,7 @@ modbus:
         scale: 0.1
         precision: 2
         unit_of_measurement: °C
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_shift_value_in_auto_mode_circuit2"
@@ -506,6 +511,7 @@ modbus:
         scale: 1
         precision: 2
         unit_of_measurement: °C
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_dhw_target_temp"
@@ -516,6 +522,7 @@ modbus:
         scale: 0.1
         precision: 2
         unit_of_measurement: °C
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_energy_state_input_raw"
@@ -532,6 +539,7 @@ modbus:
         slave: 1
         precision: 1
         unit_of_measurement: "%"
+        state_class: measurement
         scan_interval: 10
 
       - name: "hp_power_limitation"
